@@ -7,8 +7,11 @@ import cartIcon from '../../assets/header/cartIcon.svg'
 import './header.css'
 
 function Header() {
-    const { products } = useContext(CartContext);
+    const { products, showCart, setShowCart } = useContext(CartContext);
     const username = 'Juan'
+    const handleClickShowCart = () => {
+        setShowCart(!showCart);
+    }
     return (
         <header>
             <div className="first-container-header">
@@ -16,7 +19,7 @@ function Header() {
                     <img src={searchIcon} alt="Icon search" />
                     <input type="text" placeholder="Que quieres encontrar hoy" />
                 </div>
-                <div className="cart">
+                <div className="cart" onClick={handleClickShowCart}>
                     <img src={cartIcon} alt="Cart" />
                     <span>{products.length}</span>
                 </div>
