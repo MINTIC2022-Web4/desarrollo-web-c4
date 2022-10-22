@@ -4,6 +4,7 @@ import { CartContext } from '../../context/CartContext';
 import notificationsIcon from '../../assets/header/notifications.svg'
 import userIcon from '../../assets/header/clientIcon.svg'
 import cartIcon from '../../assets/header/cartIcon.svg'
+import { Link } from 'wouter';
 import './header.css'
 
 function Header() {
@@ -33,8 +34,8 @@ function Header() {
                             <option value="2">Categoría 2</option>
                         </select>
                     </div>
-                    <a href="/">Marcas</a>
-                    <a href="/">About</a>
+                    <Link to="/marcas">Marcas</Link>
+                    <Link to='/about'>About</Link>
                 </div>
                 <div className="second-container">
                     <div className="icons-container">
