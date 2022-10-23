@@ -1,0 +1,64 @@
+.formContainer {
+    position: absolute;
+    width: 1005px;
+    height: 789px;
+    left: 191px;
+    top: 502px;
+
+}
+
+.formContainer {
+    display: flexionar;
+    flex-direction: fila;
+    flex-wrap: envolver;
+    justify-content: flex-start;
+    align-content: tramo;
+    align-items: stretch;
+}
+
+.flex-item:nth-child(1) {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(2) {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(3) {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.flex-item:nth-child(4) {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.buttonForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 343px;
+    height: 50px;
+    left: 845px;
+    top: 1374px;
+
+    background: #00195B;
+    border-radius: 26px;
+}
+
+.textButton {
+    color: #fff;
+
+}
