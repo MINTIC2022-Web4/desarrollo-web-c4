@@ -1,8 +1,8 @@
 import './App.css'
 import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
 import Cart from './components/cart/Cart'
 import MessageCart from './components/cart/MessageCart/MessageCart'
-
 import { CartContextProvider } from './context/CartContext'
 import { Route, useLocation } from 'wouter'
 import About from './components/about/About'
@@ -20,6 +20,7 @@ function App() {
         <Cart />
         <MessageCart />
         <Products />
+        <Footer />
       </CartContextProvider>
     </>
   )
