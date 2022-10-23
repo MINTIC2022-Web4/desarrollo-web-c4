@@ -32,6 +32,7 @@
 .col1 {
   grid-area: 1 / 1 / 2 / 2;
 }
+
 .col2 {
   grid-area: 1 / 2 / 2 / 3;
 }
@@ -48,7 +49,7 @@
 }
 
 .from-input,
-.col3 > * {
+.col3>* {
   width: 40vw;
   height: 35px;
 }

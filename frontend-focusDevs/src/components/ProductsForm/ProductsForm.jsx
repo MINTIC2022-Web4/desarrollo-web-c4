@@ -5,7 +5,10 @@ import Select from "react-select";
 
 const productsForm = (props) => {
   const [nombre, setNombre] = useState("");
+  const [marca, setMarca] = useState("");
   const [categoria, setCategoria] = useState("categoria1");
+  const [stock, setStock] = useState("");
+  const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
 
   const options = [
@@ -17,11 +20,19 @@ const productsForm = (props) => {
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
   };
+  const handleMarcaChange = (event) => {
+    setMarca(event.target.value);
+  };
 
   const handleCategoria = (event) => {
     setCategoria(event.target.value);
   };
-
+  const handleStockChange = (event) => {
+    setStock(event.target.value);
+  };
+  const handlePrecioChange = (event) => {
+    setPrecio(event.target.value);
+  };
   const handleDescripcionChange = (event) => {
     setDescripcion(event.target.value);
   };
@@ -34,11 +45,16 @@ const productsForm = (props) => {
   return (
     <>
       <form onSubmit={handleFormSubit}>
+
+        <div className="agregar">
+        <div class="col3">Agregar productos</div>
+        </div>
+        <div className="ir"> </div>
         <div className="formContainer">
           <div className="row">
             <div class="requerido">*</div>
             <div class="col2">Imagen </div>
-            <div class="div3"> c</div>
+            <div class="div3"></div>
           </div>
           <div className="row">
             <div class="requerido">*</div>
@@ -55,7 +71,14 @@ const productsForm = (props) => {
           <div className="row">
             <div class="requerido">*</div>
             <div class="col2">Marca</div>
-            <div class="col3"> </div>
+            <div class="col3">
+              <input
+                className="from-input"
+                type="text"
+                value={marca}
+                onChange={handleMarcaChange}
+              />
+            </div>
           </div>
           <div className="row">
             <div class="requerido">*</div>
@@ -71,18 +94,32 @@ const productsForm = (props) => {
           <div className="row">
             <div class="requerido">*</div>
             <div class="col2">Stock</div>
-            <div class="col3"> </div>
+            <div class="col3">
+              <input
+                className="from-input"
+                type="text"
+                value={stock}
+                onChange={handleStockChange}
+              />
+            </div>
           </div>
           <div className="row">
             <div class="requerido">*</div>
             <div class="col2">Precio</div>
-            <div class="col3"> </div>
+            <div class="col3">
+              <input
+                className="from-input"
+                type="text"
+                value={precio}
+                onChange={handlePrecioChange}
+              />
+            </div>
           </div>
           <div className="row">
             <div class="requerido">*</div>
             <div class="col2">Descripción</div>
-            <div class="col3"> 
-                <textarea className="from-input" value={descripcion} onChange={handleDescripcionChange} />
+            <div class="col3">
+              <textarea className="from-input" value={descripcion} onChange={handleDescripcionChange} />
             </div>
           </div>
           <div className="buttonForm row">
