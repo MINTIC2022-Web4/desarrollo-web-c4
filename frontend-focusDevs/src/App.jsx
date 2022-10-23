@@ -7,6 +7,7 @@ import { CartContextProvider } from './context/CartContext'
 import { Route, useLocation } from 'wouter'
 import About from './components/about/About'
 import Marcas from './components/marcas/Marcas'
+import ProductCard from './components/customerProductCards/CustomerProductCards'
 import Products from './components/ProductsForm/ProductsForm'
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
         <Route path="/about" component={About} />
         <Cart />
         <MessageCart />
-        <Products />
+        {/*<Products />*/}
+        
+        <ProductCard />
         <Footer />
       </CartContextProvider>
     </>

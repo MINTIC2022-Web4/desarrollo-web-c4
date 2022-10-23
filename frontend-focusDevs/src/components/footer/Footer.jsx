@@ -15,56 +15,6 @@ const Footer = () => {
   const textFooter6 = "Nosotros ";
   const textFooter7 = "Trabaja con nosotros(Jobs)";
 
-  /*return (
-    <footer>
-  
-      <div className="footer-container">
-        <span className="text-footer1">{textFooter1}</span>
-        <div className="footer-container-icon">
-          <div className="face-icon">
-            <a href="#">
-              <img src={faceIcon} alt="face icon" />
-            </a>
-          </div>
-          <div className="instagram-icon">
-            <a href="#">
-              <img src={instagramIcon} alt="instagram icon" />
-            </a>
-          </div>
-          <div className="twitter-icon">
-            <a href="#">
-              <img src={twitterIcon} alt="twitter icon" />
-            </a>
-          </div>
-          <div className="youtube-icon">
-            <a href="#">
-              <img src={youtubeIcon} alt="youtube icon" />
-            </a>
-          </div>
-        </div>
-        <div className="footer-container-app">
-          <div className="textFooter2">{textFooter2}</div>
-          <div className="playstore-icon">
-            <a href="#">
-              <img src={playStoreIcon} alt="youtube icon" />
-            </a>
-          </div>
-          <div className="app-icon">
-            <a href="#">
-              <img src={appIcon} alt="youtube icon" />
-            </a>
-          </div>
-        </div>
-        <div className="footer-container-info">
-          <div className="textFooter3">{textFooter3}</div>
-          <div className="textFooter4">{textFooter4}</div>
-          <div className="textFooter5">{textFooter5}</div>
-          <div className="textFooter6">{textFooter6}</div>
-          <div className="textFooter7">{textFooter7}</div>
-        </div>
-      </div>
-    </footer>
-  );*/
   return (
     <footer>
       <div className="footer-container">

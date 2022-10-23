@@ -13,7 +13,7 @@
   width: 100vw;
   height: 240px;
   left: 0px;
-  top: 100vh;
+  top: 2134px;
   background: #00195b;
   color: #ffffff;
   font-weight: 600;
@@ -44,13 +44,10 @@
 
 .row-footer {
   display: flex;
-
   justify-content: center;
   align-items: stretch;
-  /* flex-flow: column nowrap; */
   flex-direction: column;
   flex-wrap: nowrap;
-
   height: 100%;
   padding: 15px;
   gap: 5px;
