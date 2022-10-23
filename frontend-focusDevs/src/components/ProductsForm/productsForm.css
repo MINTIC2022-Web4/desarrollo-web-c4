@@ -3,7 +3,7 @@
   width: 70vw;
   height: 70vh;
   left: 20vw;
-  top: 40vh;
+  top: 35vh;
   display: block;
 }
 
@@ -42,25 +42,35 @@
   background: #ededed;
 }
 
-.col3, .div3{
+.col3,
+.div3 {
   grid-area: 1 / 3 / 2 / 4;
-} 
+}
 
-.from-input, .col3>*{
+.from-input,
+.col3 > * {
   width: 40vw;
   height: 35px;
 }
 
-.from-input{
+.from-input {
   box-sizing: border-box;
   background: #ffffff;
-  border: 1px solid #9f9f9f;
+  border: 1px solid hsl(0, 0%, 80%);
   border-radius: 5px;
   padding: 0.5vw;
 }
 
-textarea{
-  min-height: 10vh;
+*:focus {
+  outline: none !important;
+  border: 3px solid #2685ff;
+  box-shadow: 0 0 10px #719ece;
+}
+
+textarea {
+  min-height: 5vh;
+  max-height: 10vh;
+  max-width: 40vw;
 }
 
 .buttonForm input[type="submit"] {
