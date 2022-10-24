@@ -17,7 +17,7 @@
 #wrapper:after {
   content: "";
   display: block;
-  height: 15vh; /* the footer's total height */
+  height: 240px; /* the footer's total height */
 }
 
 #content {
