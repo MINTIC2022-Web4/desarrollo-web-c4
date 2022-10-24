@@ -44,101 +44,121 @@ const productsForm = (props) => {
 
   return (
     <>
-      <form onSubmit={handleFormSubit}>
+      <div className="products-container">
         <div>
-          <nav class="menu">
+          <div className="row-breadcrumb">
+            <span>Home</span>
+            <span>{">"}</span>
+            <span>Productos</span>
+            <span>{">"}</span>
+            <span>Agregar</span>
+          </div>
+          <div className="row-breadcrumb">
+            <div class="col3">{"<- "}Agregar productos</div>
+          </div>
+          <br />
+          <br />
+          <hr class="row-hr"></hr>
+          <div className="row-forms">
+            <form onSubmit={handleFormSubit}>
+              <div className="agregar"></div>
+              <div className="ir"> </div>
+              <div className="formContainer">
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Imagen </div>
+                  <div class="div3"></div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Nombre</div>
+                  <div class="col3">
+                    <input
+                      className="from-input"
+                      type="text"
+                      value={nombre}
+                      onChange={handleNombreChange}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Marca</div>
+                  <div class="col3">
+                    <input
+                      className="from-input"
+                      type="text"
+                      value={marca}
+                      onChange={handleMarcaChange}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Categoria</div>
+                  <div class="col3">
+                    <Select
+                      options={options}
+                      onChange={handleCategoria}
+                      placeholder="Seleccione una categoria"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Stock</div>
+                  <div class="col3">
+                    <input
+                      className="from-input"
+                      type="text"
+                      value={stock}
+                      onChange={handleStockChange}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Precio</div>
+                  <div class="col3">
+                    <input
+                      className="from-input"
+                      type="text"
+                      value={precio}
+                      onChange={handlePrecioChange}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="requerido">*</div>
+                  <div class="col2">Descripción</div>
+                  <div class="col3">
+                    <textarea
+                      className="from-input"
+                      value={descripcion}
+                      onChange={handleDescripcionChange}
+                    />
+                  </div>
+                </div>
+                <div className="buttonForm">
+                  <input
+                    className="textButton"
+                    type="submit"
+                    value="Guardar Cambios"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {/*<nav class="menu">
             <ul>
               <li>Home</li>
               <li>Productos</li>
               <li>Agregar</li>
             </ul>
-          </nav>
+          </nav>*/}
         </div>
-        <div className="agregar">
-          <div class="col3">Agregar productos</div>
-        </div>
-        <div className="ir"> </div>
-        <div className="formContainer">
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Imagen </div>
-            <div class="div3"></div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Nombre</div>
-            <div class="col3">
-              <input
-                className="from-input"
-                type="text"
-                value={nombre}
-                onChange={handleNombreChange}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Marca</div>
-            <div class="col3">
-              <input
-                className="from-input"
-                type="text"
-                value={marca}
-                onChange={handleMarcaChange}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Categoria</div>
-            <div class="col3">
-              <Select
-                options={options}
-                onChange={handleCategoria}
-                placeholder="Seleccione una categoria"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Stock</div>
-            <div class="col3">
-              <input
-                className="from-input"
-                type="text"
-                value={stock}
-                onChange={handleStockChange}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Precio</div>
-            <div class="col3">
-              <input
-                className="from-input"
-                type="text"
-                value={precio}
-                onChange={handlePrecioChange}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div class="requerido">*</div>
-            <div class="col2">Descripción</div>
-            <div class="col3">
-              <textarea className="from-input" value={descripcion} onChange={handleDescripcionChange} />
-            </div>
-          </div>
-          <div className="buttonForm row">
-            <input
-              className="textButton"
-              type="submit"
-              value="Guardar Cambios"
-            />
-          </div>
-        </div>
-      </form>
+      </div>
     </>
   );
 };

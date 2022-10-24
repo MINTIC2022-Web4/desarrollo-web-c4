@@ -20,8 +20,8 @@ function App() {
           <Route path="/about" component={About} />
           <Cart />
           <MessageCart />
-          {/*<Products />*/}
-           <ProductCard />
+          <Products />
+          {/*<ProductCard />*/}
         </CartContextProvider>
         </div>
       </div>
