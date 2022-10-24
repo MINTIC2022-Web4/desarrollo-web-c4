@@ -6,7 +6,27 @@
   top: 35vh;
   display: block;
 }
+.menu{
 
+  position: absolute;
+  width: 67.93px;
+  height: 19px;
+  left: 240px;
+  top: 209px;
+  
+  /* Web/Párrafos/Párrafo M/SemiBold_12 */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  
+  /* or 150% */
+  letter-spacing: -0.6px;
+  
+  /* Primary/Tida Pool */
+  color: #005B56;
+}
 .formContainer {
   font-family: "Inter";
   font-style: normal;

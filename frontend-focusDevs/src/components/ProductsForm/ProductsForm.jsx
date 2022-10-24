@@ -45,9 +45,17 @@ const productsForm = (props) => {
   return (
     <>
       <form onSubmit={handleFormSubit}>
-
+        <div>
+          <nav class="menu">
+            <ul>
+              <li>Home</li>
+              <li>Productos</li>
+              <li>Agregar</li>
+            </ul>
+          </nav>
+        </div>
         <div className="agregar">
-        <div class="col3">Agregar productos</div>
+          <div class="col3">Agregar productos</div>
         </div>
         <div className="ir"> </div>
         <div className="formContainer">
