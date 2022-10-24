@@ -1,0 +1,17 @@
+  
+#wrapper {
+    background-color: #e3f2fd;
+    min-height: 100%;
+    height: auto !important;
+    margin-bottom: -240px; /* the bottom margin is the negative value of the footer's total height */
+  }
+  
+  #wrapper:after {
+    content: "";
+    display: block;
+    height: 240px; /* the footer's total height */
+  }
+  
+  #content {
+    height: 100%;
+  }
