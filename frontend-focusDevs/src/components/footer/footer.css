@@ -1,19 +1,6 @@
-.paginacion {
-  align-items: center;
-  align-self: center;
-  display: flex;
-  height: 50px;
-  margin-left: 6px;
-  margin-top: 1104px;
-  min-width: 310px;
-}
-
 .footer-container {
-  position: absolute;
   width: 100vw;
   height: 240px;
-  left: 0px;
-  top: 2134px;
   background: #00195b;
   color: #ffffff;
   font-weight: 600;
