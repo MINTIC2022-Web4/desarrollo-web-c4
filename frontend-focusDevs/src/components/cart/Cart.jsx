@@ -5,19 +5,19 @@ import productsJSON from '../../services/products.json';
 import './cart.css'
 
 function Cart() {
-    const { products, setProducts, showCart } = useContext(CartContext);
+    const { productsCart, setProducts, showCart } = useContext(CartContext);
 
-    useEffect(() => {
-        setProducts(productsJSON);
+    // useEffect(() => {
+    //     setProducts(productsJSON);
 
-    }, []);
+    // }, []);
 
     return (
         <>
             {
                 showCart ?
                     <div className="container-cart-products">
-                        {products.map(product =>
+                        {productsCart.map(product =>
                             <ItemCart product={product} />
                         )}
                     </div>

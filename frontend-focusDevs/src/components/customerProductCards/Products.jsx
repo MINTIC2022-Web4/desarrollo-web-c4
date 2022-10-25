@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import icon from "../../assets/customerProductsCard/Vector.svg";
+import { CartContext } from "../../context/CartContext";
 
 const Products = ({ products, loading }) => {
-  const labels ={
-    textmarca:"Marca: ",
-    textPrecio:"Stock: "
+
+  const { addProductsCart } = useContext(CartContext);
+
+  const labels = {
+    textmarca: "Marca: ",
+    textPrecio: "Stock: "
   }
   if (loading) {
     return <h2>Loading...</h2>;
+  }
+
+  const handleSendProductsToCart = (product) => {
+    addProductsCart(product);
   }
 
   return (
     <>
       <div class="product-row">
         {products.map(info => (
-          <div className = "product-container">
-            <a href="#" class="item1">
+          <div className="product-container">
+            <a href="#" class="item1" onClick={() => handleSendProductsToCart(info)}>
               <img src={icon} alt="" />
             </a>
             <div class="item2">

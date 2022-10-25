@@ -8,7 +8,7 @@ import { Link } from 'wouter';
 import './header.css'
 
 function Header() {
-    const { products, showCart, setShowCart } = useContext(CartContext);
+    const { productsCart, showCart, setShowCart } = useContext(CartContext);
     const username = 'Juan'
     const handleClickShowCart = () => {
         setShowCart(!showCart);
@@ -22,7 +22,7 @@ function Header() {
                 </div>
                 <div className="cart" onClick={handleClickShowCart}>
                     <img src={cartIcon} alt="Cart" />
-                    <span>{products.length}</span>
+                    <span>{productsCart.length}</span>
                 </div>
             </div>
             <div className="second-header-container">
