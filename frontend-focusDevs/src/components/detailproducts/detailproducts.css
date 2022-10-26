@@ -1,0 +1,85 @@
+.detail-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  margin: 5vh 10%;
+  font-family: "Inter";
+  font-style: normal;
+}
+
+.detail-container .detail-container-img {
+  grid-area: 1 / 1 / 2 / 2;
+  border-radius: 5px;
+  padding: 8px;
+  align-self: center;
+}
+.detail-container .detail-container-info {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.detail-container .detail-container-img img {
+  width: 50vw;
+  max-width: 50vw;
+  min-width: 30vw;
+}
+
+.detail-container .detail-container-info .detail-product-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 15px;
+  gap: 5px;
+}
+
+.detail-container .detail-container-info .detail-product-info > div {
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.detail-container .detail-product-info > div:nth-child(1) {
+  margin-top: 3vh;
+  flex-grow: 0.5;
+  font-weight: 600;
+  font-size: 2vw;
+  line-height: 35px;
+  letter-spacing: -0.8px;
+  color: #272727;
+}
+
+.detail-container .detail-product-info > div:nth-child(2) {
+  font-weight: 700;
+  font-size: 2vw;
+  line-height: 34px;
+  text-decoration-line: underline;
+  color: #005b56;
+}
+
+.detail-container .detail-product-info > div:nth-child(3) {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 34px;
+  text-decoration-line: underline;
+  color: #005b56;
+}
+
+.detail-container .detail-product-info > div:nth-child(4) {
+  font-weight: 700;
+  font-size: 2vw;
+  line-height: 35px;
+  letter-spacing: -0.8px;
+  color: #00cc99;
+}
+
+.detail-container .detail-product-info > div:nth-child(5) > a > img {
+  max-width: 30%;
+}
+
+.detail-container .detail-product-info > div:nth-child(6) {
+  font-weight: 700;
+  font-size: 3vw;
+  line-height: 35px;
+  letter-spacing: -0.8px;
+  color: #00cc99;
+}

@@ -9,6 +9,8 @@ import About from "./components/about/About";
 import Marcas from "./components/marcas/Marcas";
 import ProductCard from "./components/customerProductCards/CustomerProductCards";
 import FormProducts from "./components/ProductsForm/ProductsForm";
+import DetailProducts from "./components/detailproducts/DetailProducts";
+
 function App() {
   return (
     <>
@@ -21,7 +23,8 @@ function App() {
           <Cart />
           <MessageCart />
           {/*<FormProducts />*/}
-          <ProductCard />
+          {/*<ProductCard />*/}
+          <DetailProducts />
         </CartContextProvider>
         </div>
       </div>
