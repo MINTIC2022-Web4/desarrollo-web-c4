@@ -222,7 +222,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Listado de productos
         </Typography>
       )}
 
