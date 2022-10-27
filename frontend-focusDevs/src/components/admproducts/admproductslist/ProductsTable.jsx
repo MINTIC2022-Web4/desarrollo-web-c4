@@ -360,7 +360,7 @@ export default function ProductsTable() {
                         scope="row"
                         padding="none"
                       >
-                        {row.name}
+                        {row.id}
                       </TableCell>
                       <TableCell align="left">{row.nombre}</TableCell>
                       <TableCell align="left">{row.marca}</TableCell>
