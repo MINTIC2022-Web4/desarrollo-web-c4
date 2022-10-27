@@ -35,7 +35,7 @@
 }
 .products-list-container .row-products-elements {
   grid-area: 4 / 1 / 5 / 2;
-  margin: 5vh 10vw;
+  margin: 3vh 10vw;
 }
 .products-list-container .row-pagination {
   grid-area: 5 / 1 / 6 / 2;
@@ -56,4 +56,12 @@
 
 .css-1ex1afd-MuiTableCell-root img {
     max-inline-size: 150px !important;
+}
+
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root{
+    position: inherit !important;
+}
+
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root{
+    position: inherit !important;
 }

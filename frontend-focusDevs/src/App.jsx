@@ -26,7 +26,6 @@ function App() {
           {/*<FormProducts />*/}
           {/*<ProductCard />*/}
           {/*<DetailProducts />*/}
-          {/*<DetailProducts />*/}
           <AdmProductList />
         </CartContextProvider>
         </div>

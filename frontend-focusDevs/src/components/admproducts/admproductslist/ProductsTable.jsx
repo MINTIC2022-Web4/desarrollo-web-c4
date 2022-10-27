@@ -108,6 +108,12 @@ const headCells = [
     label: "Marca",
   },
   {
+    id: "categoria",
+    numeric: false,
+    disablePadding: false,
+    label: "Categoria",
+  },
+  {
     id: "stock",
     numeric: true,
     disablePadding: false,
@@ -374,6 +380,7 @@ export default function ProductsTable() {
                       </TableCell>
                       <TableCell align="left">{row.nombre}</TableCell>
                       <TableCell align="left">{row.marca}</TableCell>
+                      <TableCell align="left">{row.categoria}</TableCell>
                       <TableCell align="right">{parseInt(row.cantidad, 10)}</TableCell>
                       <TableCell align="right">{parseInt(row.precio, 10)}</TableCell>
                     </TableRow>
@@ -401,10 +408,11 @@ export default function ProductsTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
-      />
+      />*/}
+      
     </Box>
   );
 }

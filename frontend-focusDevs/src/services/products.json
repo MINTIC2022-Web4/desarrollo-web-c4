@@ -5,7 +5,8 @@
         "nombre": "Monitor Curvo FHD de 24'' HDMi",
         "precio": 199.99,
         "cantidad": 1,
-        "marca": "Samsung"
+        "marca": "Samsung",
+        "categoria":"monitor"
     },
     {
         "id":2,
@@ -13,8 +14,8 @@
         "nombre": "Monitor Curvo FHD de 24'' HDMi",
         "precio": 199.99,
         "cantidad": 2,
-        "marca": "Samsung"
-
+        "marca": "Samsung",
+        "categoria":"memoria RAM"
     },
     {
         "id":3,
