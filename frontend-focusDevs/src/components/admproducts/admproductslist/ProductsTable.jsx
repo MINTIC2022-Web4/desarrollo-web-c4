@@ -90,6 +90,12 @@ const headCells = [
     label: "Imagen",
   },
   {
+    id: "id",
+    numeric: false,
+    disablePadding: true,
+    label: "Id",
+  },
+  {
     id: "nombre",
     numeric: false,
     disablePadding: false,
@@ -262,7 +268,7 @@ export default function ProductsTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
+      const newSelected = rows.map((n) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -270,6 +276,7 @@ export default function ProductsTable() {
   };
 
   const handleClick = (event, name) => {
+    console.log(name);
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
 
@@ -332,17 +339,17 @@ export default function ProductsTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.nombre);
+                  const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.nombre)}
+                      onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.nombre}
+                      key={row.id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -354,6 +361,9 @@ export default function ProductsTable() {
                           }}
                         />
                       </TableCell>
+                      <TableCell align="left">
+                        <img src={row.imagen} alt="" />
+                        </TableCell>
                       <TableCell
                         component="th"
                         id={labelId}
