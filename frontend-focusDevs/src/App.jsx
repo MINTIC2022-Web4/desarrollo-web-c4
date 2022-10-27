@@ -10,6 +10,7 @@ import Marcas from "./components/marcas/Marcas";
 import ProductCard from "./components/customerProductCards/CustomerProductCards";
 import FormProducts from "./components/ProductsForm/ProductsForm";
 import DetailProducts from "./components/detailproducts/DetailProducts";
+import AdmProductList from "./components/admproducts/admproductslist/ProductsList";
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
           <MessageCart />
           {/*<FormProducts />*/}
           {/*<ProductCard />*/}
-          <DetailProducts />
+          {/*<DetailProducts />*/}
+          {/*<DetailProducts />*/}
+          <AdmProductList />
         </CartContextProvider>
         </div>
       </div>

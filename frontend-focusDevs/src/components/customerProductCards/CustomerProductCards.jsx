@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./customerProductCards.css";
 import Products from "./Products";
 import Pagination from "../pagination/pagination";
-
 import InfoProducts from "../../services/products.json"
 
 const CustomerProductCards = () => {
