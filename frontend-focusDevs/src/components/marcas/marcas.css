@@ -1,0 +1,35 @@
+.container-marcas {
+ 
+}
+
+.container-marcas {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 0.02fr);
+  grid-column-gap: 14px;
+  grid-row-gap: 10px;
+}
+
+.container-marcas .row-breadcrumb {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    margin-top: 5%;
+    margin-left: 10%;
+    justify-content: flex-start;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.6px;
+    color: #005b56;
+  }
+
+.container-marcas .info-marcas {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  margin: 5vh 15vw;
+}
+.div3 {
+  grid-area: 3 / 1 / 4 / 2;
+}

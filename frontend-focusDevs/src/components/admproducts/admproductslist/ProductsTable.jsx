@@ -358,7 +358,7 @@ const ProductsTable = ({ paginate }) => {
                       <TableCell align="left">{row.marca}</TableCell>
                       <TableCell align="left">{row.categoria}</TableCell>
                       <TableCell align="right">
-                        {(paginate ? parseInt(row.cantidad, 10) :  row.fecha )}
+                        {(paginate ? parseInt(row.cantidad, 10) :  row.fechaVenta )}
                       </TableCell>
                       <TableCell align="right">
                         {parseFloat(row.precio, 10)}
