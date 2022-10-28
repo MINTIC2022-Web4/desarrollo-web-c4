@@ -1,3 +1,7 @@
+.container_about{
+    height: 100vh;
+}
+
 .container_about>h2 {
     background-color: aliceblue;
 }

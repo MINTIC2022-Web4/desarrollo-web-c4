@@ -24,11 +24,16 @@ function App() {
           <Route path="/about" component={About} />
           <Cart />
           <MessageCart />
+          <Route path="/from-product" component={FormProducts} />
+          <Route path="/home" component={ProductCard} />
+          <Route path="/detail-products" component={DetailProducts} />
+          <Route path="/adm-product-list" component={AdmProductList} />
+          <Route path="/adm-sales-list" component={AdmProductSalesList} />
           {/*<FormProducts />*/}
           {/*<ProductCard />*/}
           {/*<DetailProducts />*/}
           {/*<AdmProductList />*/}
-          <AdmProductSalesList />
+          {/*<AdmProductSalesList />*/}
         </CartContextProvider>
         </div>
       </div>
