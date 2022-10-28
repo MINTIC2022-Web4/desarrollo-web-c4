@@ -11,30 +11,30 @@ import ProductCard from "./components/customerProductCards/CustomerProductCards"
 import FormProducts from "./components/ProductsForm/ProductsForm"; //formulario para agregar productos
 import DetailProducts from "./components/detailproducts/DetailProducts"; //detalle del producto
 import AdmProductList from "./components/admproducts/admproductslist/ProductsList"; //listado de productos 
-import AdmProductSalesList from "./components/admproducts/SalesList/SalesList"; //listado de ventas
+import AdmProductSalesList from "./components/admproducts/saleslist/SalesList"; //listado de ventas
 
 function App() {
   return (
     <>
       <div id="wrapper">
         <div id="content">
-        <CartContextProvider>
-          <Header />
-          <Route path="/marcas" component={Marcas} />
-          <Route path="/about" component={About} />
-          <Cart />
-          <MessageCart />
-          <Route path="/from-product" component={FormProducts} />
-          <Route path="/home" component={ProductCard} />
-          <Route path="/detail-products" component={DetailProducts} />
-          <Route path="/adm-product-list" component={AdmProductList} />
-          <Route path="/adm-sales-list" component={AdmProductSalesList} />
-          {/*<FormProducts />*/}
-          {/*<ProductCard />*/}
-          {/*<DetailProducts />*/}
-          {/*<AdmProductList />*/}
-          {/*<AdmProductSalesList />*/}
-        </CartContextProvider>
+          <CartContextProvider>
+            <Header />
+            <Route path="/marcas" component={Marcas} />
+            <Route path="/about" component={About} />
+            <Cart />
+            <MessageCart />
+            <Route path="/from-product" component={FormProducts} />
+            <Route path="/home" component={ProductCard} />
+            <Route path="/detail-products" component={DetailProducts} />
+            <Route path="/adm-product-list" component={AdmProductList} />
+            <Route path="/adm-sales-list" component={AdmProductSalesList} />
+            {/*<FormProducts />*/}
+            {/*<ProductCard />*/}
+            {/*<DetailProducts />*/}
+            {/*<AdmProductList />*/}
+            {/*<AdmProductSalesList />*/}
+          </CartContextProvider>
         </div>
       </div>
       <Footer />

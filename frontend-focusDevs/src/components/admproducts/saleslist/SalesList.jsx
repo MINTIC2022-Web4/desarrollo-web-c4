@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import "./saleslist.css";
-import ProductsTable from "../AdmProductslist/ProductsTable";
+import ProductsTable from "../admproductslist/ProductsTable";
 import InfoProducts from "../../../services/products.json";
 
 export default function ProductSalesList() {
