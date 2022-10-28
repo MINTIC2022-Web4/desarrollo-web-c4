@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import "./productsForm.css";
 import Select from "react-select";
+import { Link } from "wouter";
 
 const productsForm = (props) => {
   const [nombre, setNombre] = useState("");
@@ -54,7 +55,9 @@ const productsForm = (props) => {
             <span>Agregar</span>
           </div>
           <div className="row-breadcrumb">
-            <div class="col3">{"<- "}Agregar productos</div>
+            <Link to="/adm-product-list">
+              <div class="col3">{"<- "}Agregar productos</div>
+            </Link>
           </div>
           <br />
           <br />

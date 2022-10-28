@@ -8,10 +8,15 @@
   font-style: normal;
 }
 
+.products-list-container {
+  margin-top: 10%;
+}
+
 .products-list-container .row-breadcrumb {
   grid-area: 1 / 1 / 2 / 2;
   margin: 5vh 10vw;
 }
+
 .products-list-container .row-tittle {
   grid-area: 2 / 1 / 3 / 2;
   margin: 2vh 10vw;
@@ -51,17 +56,17 @@
 }
 
 .css-1ex1afd-MuiTableCell-root {
-    padding: 0 2vw !important;
+  padding: 0 2vw !important;
 }
 
 .css-1ex1afd-MuiTableCell-root img {
-    max-inline-size: 150px !important;
+  max-inline-size: 150px !important;
 }
 
-.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root{
-    position: inherit !important;
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root {
+  position: inherit !important;
 }
 
-.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root{
-    position: inherit !important;
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root {
+  position: inherit !important;
 }

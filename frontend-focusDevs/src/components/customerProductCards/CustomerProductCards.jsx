@@ -38,9 +38,8 @@ const CustomerProductCards = () => {
     <>
       <div className="products-container">
         <div className="row-breadcrumb">
-            <span>Home</span><span>{">"}</span><span>Productos</span>
+            <span>{`Home > Productos`}</span>
         </div>
-
         <div className="row-cards">
           <Products products={currentProducts} loading={loading} />
         </div>

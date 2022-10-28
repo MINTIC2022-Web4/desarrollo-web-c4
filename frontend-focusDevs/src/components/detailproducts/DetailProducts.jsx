@@ -26,13 +26,9 @@ const DetailProducts = () => {
 
   return (
     <>
-      <div>
+      <div className="parent">
         <div className="row-breadcrumb">
-          <span>Home</span>
-          <span>{">"}</span>
-          <span>Productos</span>
-          <span>{">"}</span>
-          <span>Monitor Samsung</span>
+          {`Home > Detalle Productos > Monitor Samsung`}
         </div>
         <div className="detail-container">
           <div className="detail-container-img">
