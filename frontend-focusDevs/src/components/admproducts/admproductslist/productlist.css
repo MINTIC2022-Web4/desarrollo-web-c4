@@ -19,9 +19,9 @@
   font-size: 26px;
   line-height: 34px;
   letter-spacing: -1.36px;
-
   color: #272727;
 }
+
 .products-list-container .row-button {
   grid-area: 3 / 1 / 4 / 2;
   margin: 2vh 10vw;
@@ -33,10 +33,12 @@
   letter-spacing: -0.6px;
   color: #005b56;
 }
+
 .products-list-container .row-products-elements {
   grid-area: 4 / 1 / 5 / 2;
-  margin: 3vh 10vw;
+  margin: 3vh 10vw 0 10vw;
 }
+
 .products-list-container .row-pagination {
   grid-area: 5 / 1 / 6 / 2;
 }
@@ -48,11 +50,9 @@
   flex-direction: row-reverse !important;
 }
 
-
 .css-1ex1afd-MuiTableCell-root {
     padding: 0 2vw !important;
 }
-
 
 .css-1ex1afd-MuiTableCell-root img {
     max-inline-size: 150px !important;

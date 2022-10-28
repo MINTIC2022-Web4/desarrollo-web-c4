@@ -6,7 +6,8 @@
         "precio": 199.99,
         "cantidad": 1,
         "marca": "Samsung",
-        "categoria":"monitor"
+        "categoria":"monitor",
+        "fechaVenta":"2022/01/02"
     },
     {
         "id":2,
@@ -15,7 +16,8 @@
         "precio": 199.99,
         "cantidad": 2,
         "marca": "Samsung",
-        "categoria":"memoria RAM"
+        "categoria":"memoria RAM",
+        "fechaVenta":"2022/01/03"
     },
     {
         "id":3,
@@ -23,7 +25,8 @@
         "nombre": "Monitor Curvo FHD de 24'' HDMi",
         "precio": 199.99,
         "cantidad": 3,
-        "marca": "Samsung"
+        "marca": "Samsung",
+        "fechaVenta":"2022/01/04"
     },
     {
         "id":4,

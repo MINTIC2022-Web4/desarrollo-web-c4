@@ -7,10 +7,11 @@ import { CartContextProvider } from "./context/CartContext";
 import { Route, useLocation } from "wouter";
 import About from "./components/about/About";
 import Marcas from "./components/marcas/Marcas";
-import ProductCard from "./components/customerProductCards/CustomerProductCards";
-import FormProducts from "./components/ProductsForm/ProductsForm";
-import DetailProducts from "./components/detailproducts/DetailProducts";
-import AdmProductList from "./components/admproducts/admproductslist/ProductsList";
+import ProductCard from "./components/customerProductCards/CustomerProductCards";//vista principal del cliente para ver productos
+import FormProducts from "./components/ProductsForm/ProductsForm"; //formulario para agregar productos
+import DetailProducts from "./components/detailproducts/DetailProducts"; //detalle del producto
+import AdmProductList from "./components/admproducts/admproductslist/ProductsList"; //listado de productos 
+import AdmProductSalesList from "./components/admproducts/SalesList/SalesList"; //listado de ventas
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
           {/*<FormProducts />*/}
           {/*<ProductCard />*/}
           {/*<DetailProducts />*/}
-          <AdmProductList />
+          {/*<AdmProductList />*/}
+          <AdmProductSalesList />
         </CartContextProvider>
         </div>
       </div>

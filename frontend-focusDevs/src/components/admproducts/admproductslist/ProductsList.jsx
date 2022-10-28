@@ -5,13 +5,13 @@ import InfoProducts from "../../../services/products.json";
 
 function ProductsList() {
 
+  const tabla = true
   return (
     <>
       <div className="products-list-container">
         <div className="row-breadcrumb">
-          <span>Home</span>
-          <span>{">"}</span>
-          <span>Lista de productos</span>
+          <span>{`Home  >   Lista de productos`} </span>
+
         </div>
         <div className="row-tittle">
           {" "}
@@ -30,7 +30,9 @@ function ProductsList() {
           <span>Agregar nuevo producto</span>
         </div>
         <div className="row-products-elements">
-          <ProductsTable />
+          <ProductsTable 
+          paginate = {tabla}
+          />
         </div>
       </div>
     </>
