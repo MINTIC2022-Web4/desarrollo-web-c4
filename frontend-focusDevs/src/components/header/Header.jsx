@@ -46,7 +46,9 @@ function Header() {
         <div className="second-container">
           <div className="icons-container">
             <img src={notificationsIcon} alt="icon notifications" />
-            <img src={userIcon} alt="icon user" />
+            <Link to="/login">
+              <img src={userIcon} alt="icon user" />
+            </Link>
             <span>Hola {username}</span>
           </div>
         </div>

@@ -12,6 +12,8 @@ import FormProducts from "./components/ProductsForm/ProductsForm"; //formulario 
 import DetailProducts from "./components/detailproducts/DetailProducts"; //detalle del producto
 import AdmProductList from "./components/admproducts/admproductslist/ProductsList"; //listado de productos 
 import AdmProductSalesList from "./components/admproducts/saleslist/SalesList"; //listado de ventas
+import Login from "./components/Login/Login";
+import { UserContextProvider } from "./context/UserContext";
 
 function App() {
   return (
@@ -19,21 +21,24 @@ function App() {
       <div id="wrapper">
         <div id="content">
           <CartContextProvider>
-            <Header />
-            <Route path="/marcas" component={Marcas} />
-            <Route path="/about" component={About} />
-            <Cart />
-            <MessageCart />
-            <Route path="/from-product" component={FormProducts} />
-            <Route path="/home" component={ProductCard} />
-            <Route path="/detail-products" component={DetailProducts} />
-            <Route path="/adm-product-list" component={AdmProductList} />
-            <Route path="/adm-sales-list" component={AdmProductSalesList} />
-            {/*<FormProducts />*/}
-            {/*<ProductCard />*/}
-            {/*<DetailProducts />*/}
-            {/*<AdmProductList />*/}
-            {/*<AdmProductSalesList />*/}
+            <UserContextProvider>
+              <Header />
+              <Route path="/marcas" component={Marcas} />
+              <Route path="/about" component={About} />
+              <Cart />
+              <MessageCart />
+              <Route path="/from-product" component={FormProducts} />
+              <Route path="/home" component={ProductCard} />
+              <Route path="/detail-products" component={DetailProducts} />
+              <Route path="/adm-product-list" component={AdmProductList} />
+              <Route path="/adm-sales-list" component={AdmProductSalesList} />
+              <Route path="/login" component={Login} />
+              {/*<FormProducts />*/}
+              {/*<ProductCard />*/}
+              {/*<DetailProducts />*/}
+              {/*<AdmProductList />*/}
+              {/*<AdmProductSalesList />*/}
+            </UserContextProvider>
           </CartContextProvider>
         </div>
       </div>
