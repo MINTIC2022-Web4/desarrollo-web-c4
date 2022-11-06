@@ -20,17 +20,17 @@ const Products = ({ products, loading }) => {
 
   return (
     <>
-      <div class="product-row">
+      <div className="product-row">
         {products.map((info) => (
           <div className="product-container">
             <a
               href="#"
-              class="item1"
+              className="item1"
               onClick={() => handleSendProductsToCart(info)}
             >
               <img src={icon} alt="" />
             </a>
-            <div class="item2">
+            <div className="item2">
               <Link to="/detail-products">
                 <img src={info.imagen} alt="" onClick={""} />
               </Link>

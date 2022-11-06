@@ -6,8 +6,9 @@ import userIcon from "../../assets/header/clientIcon.svg";
 import cartIcon from "../../assets/header/cartIcon.svg";
 import { Link } from "wouter";
 import "./header.css";
+import { hasRole, isAllowed } from "../../auth";
 
-function Header() {
+function Header({ user }) {
   const { productsCart, showCart, setShowCart } = useContext(CartContext);
   const username = "Juan";
   const handleClickShowCart = () => {
@@ -27,7 +28,7 @@ function Header() {
       </div>
       <div className="second-header-container">
         <div className="first-container">
-          <Link to="/home">home</Link>
+          <Link to="/">home</Link>
           <div className="select-list">
             <select name="categorias">
               <option value="0">Categorias</option>
@@ -35,13 +36,16 @@ function Header() {
               <option value="2">Categoría 2</option>
             </select>
           </div>
-
-          <Link to="/marcas">Marcas</Link>
+          {hasRole(user, ["admin"]) && <Link to="/marcas">Marcas</Link>}
           <Link to="/about">About</Link>
-          <Link to="/adm-product-list">Listado Productos</Link>
-          <div>
-            <Link to="/adm-sales-list">Listado Ventas</Link>
-          </div>
+          {hasRole(user, ["admin"]) && (
+            <Link to="/adm-product-list">Listado Productos</Link>
+          )}
+          {hasRole(user, ["admin"]) && (
+            <div>
+              <Link to="/adm-sales-list">Listado Ventas</Link>
+            </div>
+          )}
         </div>
         <div className="second-container">
           <div className="icons-container">
