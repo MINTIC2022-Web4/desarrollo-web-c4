@@ -20,7 +20,7 @@ function Login({ setRol }) {
         if (user === 'admin' && password === 'admin') {
             setRol('admin');
             login();
-            setLocation('/home');
+            setLocation('/');
         } else if (user != "admin" && password != "admin") {
             usernameRef.current.style.backgroundColor = "#eba2a9";
             passwordRef.current.style.backgroundColor = "#eba2a9";
