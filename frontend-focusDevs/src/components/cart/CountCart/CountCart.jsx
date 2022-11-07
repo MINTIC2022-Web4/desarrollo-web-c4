@@ -13,7 +13,7 @@ function CountCart() {
         let total = 0;
 
         productsCart.forEach(product => {
-            total += product.precio;
+            total += product.precio * product.cantidad;
         });
         total = formatter.format(total);
         return total;

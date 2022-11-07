@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import icon from "../../assets/customerProductsCard/Vector.svg";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "wouter";
+import useCart from "../../hooks/useCart";
 
 const Products = ({ products, loading }) => {
-  const { addProductsCart } = useContext(CartContext);
+  const { addProductsCart } = useCart()
 
   const labels = {
     textmarca: "Marca: ",

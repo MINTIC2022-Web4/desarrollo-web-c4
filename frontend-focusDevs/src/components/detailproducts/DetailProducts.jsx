@@ -3,10 +3,10 @@ import "./detailproducts.css";
 import tiempoEntrega from "../../assets/detailproducts/entrega.svg";
 import button from "../../assets/detailproducts/add.svg";
 import { CartContext } from "../../context/CartContext";
+import useCart from "../../hooks/useCart";
 
 const DetailProducts = () => {
-  const { addProductsCart } = useContext(CartContext);
-
+  const { addProductsCart } = useCart()
   const img =
     "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$";
   //const tiempoEntrega = "src\assets\detailproducts";
