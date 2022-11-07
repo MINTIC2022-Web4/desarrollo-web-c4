@@ -11,6 +11,8 @@ app.set('port', process.env.PORT || port)
 app.use(express.json());
 app.use('/productos', require('./routes/ruta-productos'));
 
+app.use("/ventas", require('./routes/ruta-ventas'));
+
 app.listen(port, () => console.log(`App Libro esta en el puerto ${port}!`));
 
 
