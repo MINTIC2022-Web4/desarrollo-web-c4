@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./customerProductCards.css";
-import Products from "./Products";
+import Products from "./ProductsInfoCard";
 import Pagination from "../pagination/pagination";
-import InfoProducts from "../../services/products.json";
-
-import axios from "axios";
 
 const CustomerProductCards = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
-  const img = "/src/assets/customerProductsCard/pc1.png";
 
   /*useEffect(() => {
     const fetchProducts = async () => {
