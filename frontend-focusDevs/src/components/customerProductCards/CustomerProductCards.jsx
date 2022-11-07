@@ -16,7 +16,7 @@ const CustomerProductCards = () => {
   /*useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:3001/pruebas');
+      const res = await axios.get('http://localhost:3001/productos');
       setProducts(res.data.data);
       setLoading(false);
     };
@@ -25,7 +25,7 @@ const CustomerProductCards = () => {
   }, []);*/
 
   useEffect(() => {
-    fetch("http://localhost:3001/pruebas")
+    fetch("http://localhost:3001/productos")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);

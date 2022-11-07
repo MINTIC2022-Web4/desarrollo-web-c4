@@ -1,15 +1,29 @@
-import React, { createContext } from "react";
 import "./saleslist.css";
 import ProductsTable from "../admproductslist/ProductsTable";
 import InfoProducts from "../../../services/products.json";
+import React, { useState, useEffect } from "react";
 
 export default function ProductSalesList() {
+  const tabla = false;
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/productos")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+
   let total = 0;
   InfoProducts.forEach(function (a) {
     total += a.precio;
   });
   total = Math.round(total * 100.0) / 100.0;
-  const prueba = false;
 
   return (
     <>
@@ -23,7 +37,7 @@ export default function ProductSalesList() {
         </div>
 
         <div className="row-products-elements">
-          <ProductsTable paginate={prueba} />
+          <ProductsTable tipoTabla={tabla} listProducts={products} />
         </div>
         <div className="row-total">
           <div className="total">Total Ventas: {`$${total}`}</div>

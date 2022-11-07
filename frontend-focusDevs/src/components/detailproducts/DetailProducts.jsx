@@ -5,10 +5,6 @@ import useCart from "../../hooks/useCart";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const client = axios.create({
-  baseURL: "http://localhost:3001/pruebas/",
-});
-
 const DetailProducts = ({ id }) => {
   const { addProductsCart } = useCart();
   const [info, setInfo] = useState([]);
@@ -16,7 +12,7 @@ const DetailProducts = ({ id }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await axios.get(
-        `http://localhost:3001/pruebas/${parseInt(id)}`
+        `http://localhost:3001/productos/${parseInt(id)}`
       );
       setInfo(res.data.data);
     };

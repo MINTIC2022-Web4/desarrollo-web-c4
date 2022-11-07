@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./productlist.css";
 import ProductsTable from "./ProductsTable";
-import InfoProducts from "../../../services/products.json";
 import { Link } from "wouter";
-import axios from "axios";
 
 function ProductsList() {
   const tabla = true;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      const res = await axios.get("http://localhost:3001/pruebas");
-      setProducts(res.data.data);
-      setLoading(false);
-    };
-
-    fetchProducts();
+    fetch("http://localhost:3001/productos")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }, []);
 
   return (
@@ -44,7 +42,7 @@ function ProductsList() {
           <span>Agregar nuevo producto</span>
         </div>
         <div className="row-products-elements">
-          <ProductsTable paginate={tabla} />
+          <ProductsTable tipoTabla={tabla} listProducts={products} />
         </div>
       </div>
     </>
