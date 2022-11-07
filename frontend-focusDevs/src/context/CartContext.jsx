@@ -6,9 +6,6 @@ export function CartContextProvider(props) {
     const [products, setProducts] = useState([]);
     const [showCart, setShowCart] = useState(false);
     const [productsCart, setProductsCart] = useState([]);
-    const addProductsCart = (product) => {
-        setProductsCart([...productsCart, product]);
-    }
     return (
         <CartContext.Provider
             value={{
@@ -17,7 +14,7 @@ export function CartContextProvider(props) {
                 showCart,
                 setShowCart,
                 productsCart,
-                addProductsCart
+                setProductsCart
             }}>
             {props.children}
         </CartContext.Provider>
