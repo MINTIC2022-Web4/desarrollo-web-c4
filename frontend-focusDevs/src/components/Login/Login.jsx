@@ -3,9 +3,9 @@ import userIcon from '../../assets/login/user.svg';
 import passwordIcon from '../../assets/login/password.svg';
 import './login.css'
 import useUser from '../../hooks/useUser';
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 
-function Login() {
+function Login({ setRol }) {
 
     const [location, setLocation] = useLocation();
 
@@ -18,6 +18,7 @@ function Login() {
         const user = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         if (user === 'admin' && password === 'admin') {
+            setRol('admin');
             login();
             setLocation('/home');
         } else if (user != "admin" && password != "admin") {
@@ -49,7 +50,9 @@ function Login() {
                         </div>
                         <div className="container-login__card__form__input buttons-form">
                             <button type="submit" onClick={(event) => handleSubmit(event)}>Iniciar sesión</button>
-                            <button type="submit">Cancelar</button>
+                            <Link to="/">
+                                <button type="submit">Cancelar</button>
+                            </Link>
                         </div>
                     </form>
                 </div>
