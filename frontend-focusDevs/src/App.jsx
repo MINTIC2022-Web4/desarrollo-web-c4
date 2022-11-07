@@ -17,8 +17,6 @@ import { UserContextProvider } from "./context/UserContext";
 import { useEffect, useState } from "react";
 import { hasRole, isAllowed } from "./auth";
 
-
-
 /*let user = {
   roles: ["user", "admin"],
   rights: ["can_view_articles", "can_view_users"],
@@ -27,15 +25,15 @@ import { hasRole, isAllowed } from "./auth";
 const App = () => {
   const [user, setUser] = useState({
     roles: ["user"],
-    rights: ["puede_comprar"]
+    rights: ["puede_comprar"],
   });
   const [rol, setRol] = useState("");
   useEffect(() => {
     if (rol === "admin") {
       setUser({
         roles: ["user", "admin"],
-        rights: ["can_view_articles", "can_view_users"]
-      })
+        rights: ["can_view_articles", "can_view_users"],
+      });
     }
   }, [rol]);
   return (
@@ -60,7 +58,9 @@ const App = () => {
                 <Route path="/" component={ProductCard} />
               )}
               {hasRole(user, ["user"]) && (
-                <Route path="/detail-products" component={DetailProducts} />
+                <Route path="/detail-products/:id/prueba">
+                  {(params) => <DetailProducts id={params.id} />}
+                </Route>
               )}
               {hasRole(user, ["admin"]) && (
                 <Route path="/adm-product-list" component={AdmProductList} />
@@ -69,8 +69,8 @@ const App = () => {
                 <Route path="/adm-sales-list" component={AdmProductSalesList} />
               )}
               {hasRole(user, ["user"]) && (
-                <Route path="/login" >
-                  {params => <Login setRol={setRol} />}
+                <Route path="/login">
+                  {(params) => <Login setRol={setRol} />}
                 </Route>
               )}
 

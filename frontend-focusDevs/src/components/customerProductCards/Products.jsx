@@ -4,8 +4,8 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "wouter";
 import useCart from "../../hooks/useCart";
 
-const Products = ({ products, loading }) => {
-  const { addProductsCart } = useCart()
+const Products = ({ productsInfo, loading }) => {
+  const { addProductsCart } = useCart();
 
   const labels = {
     textmarca: "Marca: ",
@@ -22,7 +22,7 @@ const Products = ({ products, loading }) => {
   return (
     <>
       <div className="product-row">
-        {products.map((info) => (
+        {productsInfo.map((info) => (
           <div className="product-container">
             <a
               href="#"
@@ -32,7 +32,8 @@ const Products = ({ products, loading }) => {
               <img src={icon} alt="" />
             </a>
             <div className="item2">
-              <Link to="/detail-products">
+              
+               <Link to={`/detail-products/${info.id}/prueba`}>
                 <img src={info.imagen} alt="" onClick={""} />
               </Link>
             </div>

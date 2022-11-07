@@ -52,7 +52,7 @@ const CustomerProductCards = () => {
           <span>{`Home > Productos`}</span>
         </div>
         <div className="row-cards">
-          <Products products={currentProducts} loading={loading} />
+          <Products productsInfo={currentProducts} loading={loading} />
         </div>
         <div className="row-pagination">
           <Pagination
