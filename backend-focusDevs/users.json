@@ -1,0 +1,15 @@
+[
+    {
+        "id": "1",
+        "username": "admin",
+        "password": "admin",
+        "roles": [
+            "user",
+            "admin"
+        ],
+        "rights": [
+            "can_view_articles",
+            "can_view_users"
+        ]
+    }
+]

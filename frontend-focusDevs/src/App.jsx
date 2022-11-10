@@ -27,15 +27,7 @@ const App = () => {
     roles: ["user"],
     rights: ["puede_comprar"],
   });
-  const [rol, setRol] = useState("");
-  useEffect(() => {
-    if (rol === "admin") {
-      setUser({
-        roles: ["user", "admin"],
-        rights: ["can_view_articles", "can_view_users"],
-      });
-    }
-  }, [rol]);
+
   return (
     <>
       <div id="wrapper">
@@ -70,7 +62,7 @@ const App = () => {
               )}
               {hasRole(user, ["user"]) && (
                 <Route path="/login">
-                  {(params) => <Login setRol={setRol} />}
+                  {(params) => <Login setUser={setUser} />}
                 </Route>
               )}
 

@@ -13,6 +13,9 @@ app.use('/productos', require('./routes/ruta-productos'));
 
 app.use("/ventas", require('./routes/ruta-ventas'));
 
+app.use("/login", require('./routes/ruta-login'));
+
+
 app.listen(port, () => console.log(`App Libro esta en el puerto ${port}!`));
 
 

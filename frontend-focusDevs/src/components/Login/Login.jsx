@@ -4,8 +4,9 @@ import passwordIcon from '../../assets/login/password.svg';
 import './login.css'
 import useUser from '../../hooks/useUser';
 import { Link, useLocation } from 'wouter';
+import getLogin from './getLogin'
 
-function Login({ setRol }) {
+function Login({ setUser }) {
 
     const [location, setLocation] = useLocation();
 
@@ -17,18 +18,14 @@ function Login({ setRol }) {
         event.preventDefault();
         const user = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        if (user === 'admin' && password === 'admin') {
-            setRol('admin');
-            login();
-            setLocation('/');
-        } else if (user != "admin" && password != "admin") {
-            usernameRef.current.style.backgroundColor = "#eba2a9";
-            passwordRef.current.style.backgroundColor = "#eba2a9";
-        } else if (user != "admin") {
-            usernameRef.current.style.backgroundColor = "#eba2a9";
-        } else if (password != "admin") {
-            passwordRef.current.style.backgroundColor = "#eba2a9";
-        }
+        getLogin({ 'username': user, 'password': password })
+            .then((res) => {
+                if (res.username != undefined) {
+                    setUser(res);
+                    login();
+                    setLocation('/');
+                }
+            })
     }
     return (
         <div className="container-login">

@@ -10,7 +10,6 @@ import { hasRole, isAllowed } from "../../auth";
 
 function Header({ user }) {
   const { productsCart, showCart, setShowCart } = useContext(CartContext);
-  const username = "Juan";
   const handleClickShowCart = () => {
     setShowCart(!showCart);
   };
@@ -53,7 +52,7 @@ function Header({ user }) {
             <Link to="/login">
               <img src={userIcon} alt="icon user" />
             </Link>
-            <span>Hola {username}</span>
+            <span>Hola {user.username != undefined ? user.username : 'usuario'}</span>
           </div>
         </div>
       </div>
