@@ -5,8 +5,8 @@ get consulta: http://localhost:3001/productos/3
 delete: http://localhost:3001/productos/1
 
 installar expres: npm install --save express
-npm install --save body-parser
 npm install --save cors
 port:3001
 run: npm start 
+run: nodemon index
 
