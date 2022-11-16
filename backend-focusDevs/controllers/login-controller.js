@@ -1,3 +1,6 @@
+
+const llave  = require('../jwt')
+
 module.exports = {
     login: (req, res) => {
         let fs = require('fs')
@@ -7,15 +10,23 @@ module.exports = {
             const { username, password } = req.body
             console.log(req.body)//------------------->>>>
             if (username === 'admin' && password === 'admin') {
+                const payload = {
+                    check: true
+                };
+                const token = jwt.sign(payload, llave.config, {
+                    expiresIn: 1440
+                });
+
                 return res.status(200).json(
                     {
                         "username": arrayOfUsers[0].username,
                         "roles": arrayOfUsers[0].roles,
-                        "rights": arrayOfUsers[0].rights
+                        "rights": arrayOfUsers[0].rights,
+                        token: token
                     }
                 )
             } else {
-                return res.status(200).json({ mensaje: 'Usuario o contraseña incorrectos' })
+                return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' })
             }
         })
 
