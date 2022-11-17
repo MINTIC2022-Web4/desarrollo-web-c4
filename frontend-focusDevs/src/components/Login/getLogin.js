@@ -12,6 +12,11 @@ const getLogin = async (dataLogin) => {
         data: dataLogin,
     };
     const res = await axios(options);
-    return res.data;
+    console.log("🚀 ~ file: getLogin.js ~ line 15 ~ getLogin ~ res", res)
+    if (res.status === 200) {
+        return res.data;
+    } else if (res.status === 401) {
+        throw new Error('Unauthorized');
+    }
 };
 export default getLogin;

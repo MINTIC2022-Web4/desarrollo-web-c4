@@ -7,8 +7,8 @@ function useUser() {
 
 
   const login = useCallback(
-    () => {
-      setJwt('prueba');
+    (token) => {
+      setJwt(token);
     },
     [setJwt],
   )

@@ -16,15 +16,18 @@ function Login({ setUser }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const user = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        getLogin({ 'username': user, 'password': password })
+        getLogin({ 'username': usernameRef.current.value, 'password': passwordRef.current.value })
             .then((res) => {
-                if (res.username != undefined) {
+                const { token } = res;
+                if (token != undefined) {
                     setUser(res);
-                    login();
+                    login(token);
                     setLocation('/');
                 }
+            }).catch((err) => {
+                usernameRef.current.value = '';
+                passwordRef.current.value = '';
+                alert('Usuario o contraseña incorrectos');
             })
     }
     return (
@@ -38,7 +41,7 @@ function Login({ setUser }) {
                         <div className="container-login__card__form__input">
                             {/* <label htmlFor="email">Correo electrónico</label> */}
                             <img src={userIcon} alt="icono de usuario" />
-                            <input type="text" name="username" id="username" placeholder="Username" useRef={usernameRef} />
+                            <input type="text" name="username" id="username" placeholder="Username" ref={usernameRef} />
                         </div>
                         <div className="container-login__card__form__input">
                             {/* <label htmlFor="password">Contraseña</label> */}
