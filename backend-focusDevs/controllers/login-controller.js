@@ -14,8 +14,10 @@ module.exports = {
                     check: true
                 };
                 const token = jwt.sign(payload, llave.config, {
-                    expiresIn: 1440
+                    expiresIn: 5000
                 });
+
+                console.log(token)
 
                 return res.status(200).json(
                     {
