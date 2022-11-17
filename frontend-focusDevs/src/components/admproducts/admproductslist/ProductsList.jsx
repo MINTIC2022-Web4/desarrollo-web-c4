@@ -8,7 +8,13 @@ function ProductsList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/productos")
+    fetch("http://localhost:3001/productos", {
+      method: "GET",
+      headers: {
+        "access-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NjQ1NTYzLCJleHAiOjE2Njg2NTA1NjN9.3kBKW3C6AxJqxu1mtxwgQOBqESjEHxO3n8evlpbk06k",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);
