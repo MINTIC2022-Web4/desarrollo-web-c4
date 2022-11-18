@@ -1,18 +1,19 @@
 import "./saleslist.css";
 import ProductsTable from "../admproductslist/ProductsTable";
 import InfoProducts from "../../../services/products.json";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 export default function ProductSalesList() {
   const tabla = false;
   const [products, setProducts] = useState([]);
-
+  const { jwt } = useContext(UserContext);
   useEffect(() => {
     fetch("http://localhost:3001/ventas", {
       method: "GET",
       headers: {
         "access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NjQ1NTYzLCJleHAiOjE2Njg2NTA1NjN9.3kBKW3C6AxJqxu1mtxwgQOBqESjEHxO3n8evlpbk06k",
+          jwt,
       },
     })
       .then((response) => response.json())

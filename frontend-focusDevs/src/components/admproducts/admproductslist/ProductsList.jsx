@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./productlist.css";
 import ProductsTable from "./ProductsTable";
 import { Link } from "wouter";
-
+import { UserContext } from "../../../context/UserContext";
 function ProductsList() {
   const tabla = true;
   const [products, setProducts] = useState([]);
-
+  const { jwt } = useContext(UserContext);
   useEffect(() => {
     fetch("http://localhost:3001/productos", {
       method: "GET",
       headers: {
-        "access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NjQ1NTYzLCJleHAiOjE2Njg2NTA1NjN9.3kBKW3C6AxJqxu1mtxwgQOBqESjEHxO3n8evlpbk06k",
+        "access-token": jwt,
       },
     })
       .then((response) => response.json())
