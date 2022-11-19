@@ -32,9 +32,9 @@ module.exports = {
         let { id } = req.body
         id = parseInt(id)
 
-        console.log(res.body)
+        console.log(producto)
 
-        if (!productos.has(id)) {
+        //if (!productos.has(id)) {
             productos.set(id, producto)
             try {
                 if (!req.files) {
@@ -45,15 +45,14 @@ module.exports = {
                 } else {
                     file = req.files.recfile;
                     file.mv('c:/upload/' + file.name);
-                    console.log("almacenado")
                 }
             } catch (err) {
                 res.status(500).send(err);
             }
             return res.status(200).json({ state: true, data: productos.get(id), path: "c:/" + file.name })
-        } else {
+        /*} else {
             return res.status(200).json({ state: false })
-        }
+        }*/
     })
     ,
     update: (req, res) => {

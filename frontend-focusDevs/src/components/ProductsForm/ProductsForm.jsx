@@ -47,15 +47,6 @@ const productsForm = (props) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  let producto = {
-    nombre: nombre,
-    marca: marca,
-    categoria: categoria,
-    stock: stock,
-    precio: precio,
-    descripcion: descripcion,
-  };
-
   const handleFormSubit = async (event) => {
     event.preventDefault();
 
@@ -80,10 +71,24 @@ const productsForm = (props) => {
     };
 
     fetch("http://localhost:3001/productos", requestOptions)
-      .then((response) => response.text())
+      .then((response) => {
+        response.text();
+        console.log(response)
+        alert("Producto creado correctamente");
+        clearForm()
+      })
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
+
+  function clearForm() {
+    setNombre("");
+    setCategoria("")
+    setDescripcion("")
+    setMarca("")
+    setPrecio(0)
+    setStock(0)   
+}
 
   return (
     <>
@@ -113,10 +118,12 @@ const productsForm = (props) => {
                   <div className="requerido">*</div>
                   <div className="col2">Imagen</div>
                   <div className="col3">
-                    {<FileUploader
-                      onFileSelectSuccess={(file) => setSelectedFile(file)}
-                      onFileSelectError={({ error }) => alert(error)}
-                    />}
+                    {
+                      <FileUploader
+                        onFileSelectSuccess={(file) => setSelectedFile(file)}
+                        onFileSelectError={({ error }) => alert(error)}
+                      />
+                    }
                   </div>
                 </div>
                 <div className="row">
