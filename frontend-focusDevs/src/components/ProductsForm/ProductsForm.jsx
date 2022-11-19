@@ -1,8 +1,10 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./productsForm.css";
 import Select from "react-select";
 import { Link } from "wouter";
+import { UserContext } from "../../context/UserContext";
+import FileUploader from "./FileUploader";
+import axios from "axios";
 
 const productsForm = (props) => {
   const [nombre, setNombre] = useState("");
@@ -11,11 +13,14 @@ const productsForm = (props) => {
   const [stock, setStock] = useState("");
   const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  //const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = React.useState(null);
+  const { jwt } = useContext(UserContext);
 
   const options = [
-    { value: "categoria1", label: "categoria1" },
-    { value: "categoria2", label: "categoria2" },
-    { value: "categoria3", label: "categoria3" },
+    { value: "1", label: "Monitor" },
+    { value: "2", label: "Teclado" },
+    { value: "3", label: "Diadlema" },
   ];
 
   const handleNombreChange = (event) => {
@@ -26,7 +31,7 @@ const productsForm = (props) => {
   };
 
   const handleCategoria = (event) => {
-    setCategoria(event.target.value);
+    setCategoria(event.label);
   };
   const handleStockChange = (event) => {
     setStock(event.target.value);
@@ -38,9 +43,46 @@ const productsForm = (props) => {
     setDescripcion(event.target.value);
   };
 
-  const handleFormSubit = (event) => {
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  let producto = {
+    nombre: nombre,
+    marca: marca,
+    categoria: categoria,
+    stock: stock,
+    precio: precio,
+    descripcion: descripcion,
+  };
+
+  const handleFormSubit = async (event) => {
     event.preventDefault();
-    alert(`nombre: ${nombre}`);
+
+    var formdata = new FormData();
+
+    formdata.append("nombre", nombre);
+    formdata.append("marca", marca);
+    formdata.append("categoria", categoria);
+    formdata.append("stock", stock);
+    formdata.append("precio", precio);
+    formdata.append("descripcion", descripcion);
+    formdata.append("recfile", selectedFile);
+
+    var myHeaders = new Headers();
+    myHeaders.append("access-token", jwt);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3001/productos", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   return (
@@ -56,85 +98,98 @@ const productsForm = (props) => {
           </div>
           <div className="row-breadcrumb">
             <Link to="/adm-product-list">
-              <div class="col3">{"<- "}Agregar productos</div>
+              <div className="col3">{"<- "}Agregar productos</div>
             </Link>
           </div>
           <br />
           <br />
-          <hr class="row-hr"></hr>
+          <hr className="row-hr"></hr>
           <div className="row-forms">
             <form onSubmit={handleFormSubit}>
               <div className="agregar"></div>
               <div className="ir"> </div>
               <div className="formContainer">
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Imagen </div>
-                  <div class="div3"></div>
+                  <div className="requerido">*</div>
+                  <div className="col2">Imagen</div>
+                  <div className="col3">
+                    {<FileUploader
+                      onFileSelectSuccess={(file) => setSelectedFile(file)}
+                      onFileSelectError={({ error }) => alert(error)}
+                    />}
+                  </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Nombre</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Nombre</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
                       value={nombre}
+                      required
                       onChange={handleNombreChange}
                     />
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Marca</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Marca</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
                       value={marca}
+                      required
                       onChange={handleMarcaChange}
                     />
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Categoria</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Categoria</div>
+                  <div className="col3">
                     <Select
+                      className=""
+                      classNamePrefix=""
+                      name="color"
                       options={options}
                       onChange={handleCategoria}
                       placeholder="Seleccione una categoria"
+                      required
                     />
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Stock</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Cantidad</div>
+                  <div className="col3">
                     <input
                       className="from-input"
-                      type="text"
+                      type="number"
                       value={stock}
                       onChange={handleStockChange}
+                      required
                     />
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Precio</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Precio</div>
+                  <div className="col3">
                     <input
                       className="from-input"
-                      type="text"
+                      type="number"
                       value={precio}
+                      required
                       onChange={handlePrecioChange}
                     />
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Descripción</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Descripción</div>
+                  <div className="col3">
                     <textarea
                       className="from-input"
                       value={descripcion}

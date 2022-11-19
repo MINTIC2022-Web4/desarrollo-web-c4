@@ -13,7 +13,6 @@ module.exports = {
     rutasProtegidas
 }
 
-
 rutasProtegidas.use((req, res, next) => {
     const token = req.headers['access-token'];
 

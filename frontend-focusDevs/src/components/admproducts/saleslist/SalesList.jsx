@@ -4,6 +4,7 @@ import InfoProducts from "../../../services/products.json";
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 
+
 export default function ProductSalesList() {
   const tabla = false;
   const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ export default function ProductSalesList() {
   }, []);
 
   let total = 0;
-  InfoProducts.forEach(function (a) {
+  products.forEach(function (a) {
     total += a.precio;
   });
   total = Math.round(total * 100.0) / 100.0;
@@ -39,7 +40,7 @@ export default function ProductSalesList() {
         </div>
         <div className="row-tittle">
           {" "}
-          Todos las ventas({`${InfoProducts.length} Productos`})
+          Todos las ventas({`${products.length} Productos`})
         </div>
 
         <div className="row-products-elements">
