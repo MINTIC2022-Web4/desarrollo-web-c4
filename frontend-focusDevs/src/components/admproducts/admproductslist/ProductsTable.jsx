@@ -22,11 +22,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import { UserContext } from "../../../context/UserContext";
 
-const ProductsTable = ({ tipoTabla, listProducts}) => {
-
+const ProductsTable = ({ tipoTabla, listProducts }) => {
   const rows = listProducts;
-  
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("calories");
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [dense, setDense] = React.useState(false);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const { jwt } = React.useContext(UserContext);
+
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -57,9 +65,9 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
     return stabilizedThis.map((el) => el[0]);
   }
 
-  let headersTable
+  let headersTable;
 
-  if (tipoTabla){
+  if (tipoTabla) {
     headersTable = [
       {
         id: "id",
@@ -103,8 +111,8 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
         disablePadding: false,
         label: "Precio",
       },
-    ]
-  }else {
+    ];
+  } else {
     headersTable = [
       {
         id: "id",
@@ -148,7 +156,7 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
         disablePadding: false,
         label: "Precio",
       },
-    ]
+    ];
   }
 
   const headCells = headersTable;
@@ -258,14 +266,37 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
           <span>
             <span>
               <Tooltip title="Delete">
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    var myHeaders = new Headers();
+                    console.log("nums", selected);
+                    myHeaders.append("access-token", jwt);
+                    var requestOptions = {
+                      method: "DELETE",
+                      headers: myHeaders,
+                      redirect: "follow",
+                    };
+
+                    fetch(
+                      `http://localhost:3001/productos/${selected[0]}`,
+                      requestOptions
+                    )
+                      .then((response) => response.text())
+                      .then((result) => console.log(result))
+                      .catch((error) => console.log("error", error));
+                  }}
+                >
                   <DeleteIcon />
                 </IconButton>
               </Tooltip>
             </span>
             <span>
               <Tooltip title="Edit">
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    alert("editar");
+                  }}
+                >
                   <EditIcon />
                 </IconButton>
               </Tooltip>
@@ -286,13 +317,6 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
     numSelected: PropTypes.number.isRequired,
   };
 
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -309,7 +333,6 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
   };
 
   const handleClick = (event, name) => {
-    console.log(name);
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
 
@@ -327,6 +350,7 @@ const ProductsTable = ({ tipoTabla, listProducts}) => {
     }
 
     setSelected(newSelected);
+    console.log(newSelected);
   };
 
   const handleChangePage = (event, newPage) => {
