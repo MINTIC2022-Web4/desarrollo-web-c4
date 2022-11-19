@@ -3,6 +3,8 @@ import React from "react";
 import "./productsForm.css";
 import Select from "react-select";
 import { Link } from "wouter";
+import FileUploader from "./FileUploader";
+import axios from "axios";
 
 const productsForm = (props) => {
   const [nombre, setNombre] = useState("");
@@ -11,11 +13,13 @@ const productsForm = (props) => {
   const [stock, setStock] = useState("");
   const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  //const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = React.useState(null);
 
   const options = [
-    { value: "categoria1", label: "categoria1" },
-    { value: "categoria2", label: "categoria2" },
-    { value: "categoria3", label: "categoria3" },
+    { value: "1", label: "Monitor" },
+    { value: "2", label: "Teclado" },
+    { value: "3", label: "Diadlema" },
   ];
 
   const handleNombreChange = (event) => {
@@ -26,7 +30,7 @@ const productsForm = (props) => {
   };
 
   const handleCategoria = (event) => {
-    setCategoria(event.target.value);
+    setCategoria(event.label);
   };
   const handleStockChange = (event) => {
     setStock(event.target.value);
@@ -38,9 +42,65 @@ const productsForm = (props) => {
     setDescripcion(event.target.value);
   };
 
-  const handleFormSubit = (event) => {
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  let producto = {
+    nombre: nombre,
+    marca: marca,
+    categoria: categoria,
+    stock: stock,
+    precio: precio,
+    descripcion: descripcion,
+  };
+
+  const handleFormSubit = async (event) => {
     event.preventDefault();
-    alert(`nombre: ${nombre}`);
+
+    const formData = new FormData();
+    formData.append("nombre", nombre);
+    formData.append("marca", marca);
+    formData.append("categoria", categoria);
+    formData.append("stock", stock);
+    formData.append("precio", precio);
+    formData.append("descripcion", descripcion);
+    formData.append("files", selectedFile);
+
+    console.log("formdata: ", ...formData);
+
+    /*axios({
+      method: "post",
+      url: "http://localhost:3001/productos",
+      data: formData,
+      headers: {
+        "access-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NzMxOTc3LCJleHAiOjE2Njg3MzY5Nzd9.mbk1LbATVIKjSzBhN9LrhdgzFJlBrRoOTgX877gMByw",
+        "Content-Type": "multipart/form-data"
+      },
+    })
+      .then((res) => {
+        console.log("salida", res);
+      })
+      .catch((err) => alert("File Upload Error"));
+*/
+
+    try {
+      const response = await axios({
+        method: "post",
+        url: "http://localhost:3001/productos",
+        data: formData,
+        headers: {
+          "access-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4Nzc4MjYzLCJleHAiOjE2Njg3ODMyNjN9.MzT9TZLOvQcKsKheRctodQ-kv63C72OBAtezzCfxlvI",
+          "Content-Type": "multipart/form-data",
+        },
+      }).then((res) => {
+        console.log("salida", res);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -56,26 +116,33 @@ const productsForm = (props) => {
           </div>
           <div className="row-breadcrumb">
             <Link to="/adm-product-list">
-              <div class="col3">{"<- "}Agregar productos</div>
+              <div className="col3">{"<- "}Agregar productos</div>
             </Link>
           </div>
           <br />
           <br />
-          <hr class="row-hr"></hr>
+          <hr className="row-hr"></hr>
           <div className="row-forms">
             <form onSubmit={handleFormSubit}>
               <div className="agregar"></div>
               <div className="ir"> </div>
               <div className="formContainer">
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Imagen </div>
-                  <div class="div3"></div>
+                  <div className="requerido">*</div>
+                  <div className="col2">Imagen</div>
+                  <div className="col3">
+                    {/*<FileUploader
+                      onFileSelectSuccess={(file) => setSelectedFile(file)}
+                      onFileSelectError={({ error }) => alert(error)}
+  />*/}
+                    <input type="file" name="recfile" id="archivo" onChange={handleFileSelect} />
+
+                  </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Nombre</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Nombre</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
@@ -85,9 +152,9 @@ const productsForm = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Marca</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Marca</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
@@ -97,10 +164,13 @@ const productsForm = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Categoria</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Categoria</div>
+                  <div className="col3">
                     <Select
+                      className=""
+                      classNamePrefix=""
+                      name="color"
                       options={options}
                       onChange={handleCategoria}
                       placeholder="Seleccione una categoria"
@@ -108,9 +178,9 @@ const productsForm = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Stock</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Cantidad</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
@@ -120,9 +190,9 @@ const productsForm = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Precio</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Precio</div>
+                  <div className="col3">
                     <input
                       className="from-input"
                       type="text"
@@ -132,9 +202,9 @@ const productsForm = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="requerido">*</div>
-                  <div class="col2">Descripción</div>
-                  <div class="col3">
+                  <div className="requerido">*</div>
+                  <div className="col2">Descripción</div>
+                  <div className="col3">
                     <textarea
                       className="from-input"
                       value={descripcion}

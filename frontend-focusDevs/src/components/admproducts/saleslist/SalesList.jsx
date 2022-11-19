@@ -12,7 +12,7 @@ export default function ProductSalesList() {
       method: "GET",
       headers: {
         "access-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NjQ1NTYzLCJleHAiOjE2Njg2NTA1NjN9.3kBKW3C6AxJqxu1mtxwgQOBqESjEHxO3n8evlpbk06k",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNjY4NzMzODM2LCJleHAiOjE2Njg3Mzg4MzZ9.nm2-mrT7L8v7F0qpw1LDdrameX3x2njXzsDMpz0A12A",
       },
     })
       .then((response) => response.json())
@@ -25,7 +25,7 @@ export default function ProductSalesList() {
   }, []);
 
   let total = 0;
-  InfoProducts.forEach(function (a) {
+  products.forEach(function (a) {
     total += a.precio;
   });
   total = Math.round(total * 100.0) / 100.0;
@@ -38,7 +38,7 @@ export default function ProductSalesList() {
         </div>
         <div className="row-tittle">
           {" "}
-          Todos las ventas({`${InfoProducts.length} Productos`})
+          Todos las ventas({`${products.length} Productos`})
         </div>
 
         <div className="row-products-elements">

@@ -1,8 +1,6 @@
 const toJson = require('../utils/tools')
-
 const productos = new Map()
 
-let fs = require('fs')
 
 module.exports = {
     findAll: (req, res) => {
@@ -27,7 +25,7 @@ module.exports = {
         })
         //return res.status(200).json({ state: true, data: productos.get(id) })
     },
-    save: (req, res) => {
+    /*save: (req, res) => {
         const producto = req.body
         let { id } = req.body
         id = parseInt(id)
@@ -38,7 +36,37 @@ module.exports = {
         } else {
             return res.status(200).json({ state: false })
         }
-    },
+    }*/
+    save: ( async (req, res) =>{
+        
+        try {
+            if (!req.files) {
+                res.send({
+                    status: false,
+                    message: 'No file uploaded'
+                });
+            } else {
+                let file = req.files.recfile;
+                file.mv('c:/upload/' + file.name);
+                console.log("almacenado")
+    
+                //send response
+                /*res.send({
+                    status: true,
+                    message: 'File is uploaded',
+                    data: {
+                        name: file.name,
+                        mimetype: file.mimetype,
+                        size: file.size,
+                        path: "c:/"+file.name
+                    }
+                });*/
+            }
+        } catch (err) {
+            res.status(500).send(err);
+        }
+       })
+    ,
     update: (req, res) => {
         const producto = req.body
         let { id } = req.body
@@ -62,4 +90,10 @@ module.exports = {
             return res.status(200).json({ state: false })
         }
     }
+}
+
+function uploadFiles(req, res) {
+    console.log(req.body);
+    console.log(req.file);
+    return res.status(200).json({ data: req.body})
 }
