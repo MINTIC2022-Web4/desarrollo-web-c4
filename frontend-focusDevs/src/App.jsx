@@ -34,7 +34,7 @@ const App = () => {
         <div id="content">
           <CartContextProvider>
             <UserContextProvider>
-              <Header user={user} />
+              <Header user={user} setUser={setUser} />
               {hasRole(user, ["admin"]) && (
                 <Route path="/marcas" component={Marcas} />
               )}
