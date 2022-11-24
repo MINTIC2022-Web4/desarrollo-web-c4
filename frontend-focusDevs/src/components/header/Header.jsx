@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import searchIcon from "../../assets/header/searchIcon.svg";
 import { CartContext } from "../../context/CartContext";
 import notificationsIcon from "../../assets/header/notifications.svg";
@@ -7,12 +7,25 @@ import cartIcon from "../../assets/header/cartIcon.svg";
 import { Link } from "wouter";
 import "./header.css";
 import { hasRole, isAllowed } from "../../auth";
+import useUser from "../../hooks/useUser";
+import { UserContext } from "../../context/UserContext";
 
-function Header({ user }) {
+function Header({ user, setUser }) {
   const { productsCart, showCart, setShowCart } = useContext(CartContext);
+  const [showOptions, setShowOptions] = useState(false);
+  const { logout } = useUser()
+  const { jwt } = useContext(UserContext);
   const handleClickShowCart = () => {
     setShowCart(!showCart);
   };
+  const handleClickLogout = () => {
+    setUser({
+      roles: ["user"],
+      rights: ["puede_comprar"],
+    })
+    logout()
+  }
+
   return (
     <header>
       <div className="first-container-header">
@@ -49,9 +62,21 @@ function Header({ user }) {
         <div className="second-container">
           <div className="icons-container">
             <img src={notificationsIcon} alt="icon notifications" />
-            <Link to="/login">
-              <img src={userIcon} alt="icon user" />
-            </Link>
+            {jwt != ""
+              ? <div className="icons-container__link">
+                <img src={userIcon} alt="icon user" onClick={() => setShowOptions(!showOptions)} />
+                {showOptions &&
+                  <div className="header__container__user-image__options popup">
+                    <span className="header__container__user-image__options__span--red"
+                      onClick={handleClickLogout}
+                    >Cerrar session</span>
+                  </div>
+                }
+              </div>
+              : <Link to="/login">
+                <img src={userIcon} alt="icon user" />
+              </Link>
+            }
             <span>Hola {user.username != undefined ? user.username : 'usuario'}</span>
           </div>
         </div>

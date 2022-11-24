@@ -15,7 +15,7 @@ function useUser() {
 
   const logout = useCallback(
     () => {
-      setJwt(null);
+      setJwt("");
     }, [setJwt],)
 
 
