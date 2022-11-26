@@ -23,6 +23,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import { UserContext } from "../../../context/UserContext";
+import { Link } from "wouter";
+import { hasRole, isAllowed } from "../../../auth";
 
 const ProductsTable = ({ tipoTabla, listProducts }) => {
   const rows = listProducts;
@@ -227,6 +229,10 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
 
   function EnhancedTableToolbar(props) {
     const { numSelected } = props;
+    const [user, setUser] = React.useState({
+      roles: ["user"],
+      rights: ["puede_comprar"],
+    });
 
     return (
       <Toolbar
@@ -281,7 +287,9 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
                       `http://localhost:3001/productos/${selected[0]}`,
                       requestOptions
                     )
-                      .then((response) => response.text())
+                      .then((response) =>
+                        alert(`Registro ${selected[0]} eliminado`)
+                      )
                       .then((result) => console.log(result))
                       .catch((error) => console.log("error", error));
                   }}
@@ -291,13 +299,11 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
               </Tooltip>
             </span>
             <span>
-              <Tooltip title="Edit">
-                <IconButton
-                  onClick={() => {
-                    alert("editar");
-                  }}
-                >
-                  <EditIcon />
+              <Tooltip title="Editar">
+                <IconButton>
+                  <Link to={`/from-product/${selected[0]}`}>
+                    <EditIcon />
+                  </Link>
                 </IconButton>
               </Tooltip>
             </span>

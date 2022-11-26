@@ -7,7 +7,8 @@
     "cantidad": 1,
     "marca": "Samsung",
     "categoria": "monitor",
-    "fechaVenta": "2022/01/02"
+    "fechaVenta": "2022/01/02",
+    "descripcion": "desc"
   },
   {
     "id": 2,

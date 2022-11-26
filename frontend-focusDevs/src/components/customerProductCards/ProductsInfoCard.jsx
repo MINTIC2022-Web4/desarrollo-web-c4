@@ -33,7 +33,7 @@ const ProductsInfoCard = ({ productsInfo, loading }) => {
             </a>
             <div className="item2">
               
-               <Link to={`/detail-products/${info.id}/prueba`}>
+               <Link to={`/detail-products/${info.id}`}>
                 <img src={info.imagen} alt="" onClick={""} />
               </Link>
             </div>

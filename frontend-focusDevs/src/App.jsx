@@ -44,13 +44,19 @@ const App = () => {
               <Cart />
               <MessageCart />
               {hasRole(user, ["admin"]) && (
-                <Route path="/from-product" component={FormProducts} />
+                <Route path="/from-product/:id">
+                  {(params) => <FormProducts id={params.id} />}
+                </Route>
               )}
+              {/*hasRole(user, ["admin"]) && (
+                <Route path="/from-product" component={FormProducts} > 
+                </Route>
+              )*/}
               {hasRole(user, ["user"]) && (
                 <Route path="/" component={ProductCard} />
               )}
               {hasRole(user, ["user"]) && (
-                <Route path="/detail-products/:id/prueba">
+                <Route path="/detail-products/:id">
                   {(params) => <DetailProducts id={params.id} />}
                 </Route>
               )}

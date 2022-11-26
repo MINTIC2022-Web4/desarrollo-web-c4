@@ -35,7 +35,7 @@ function ProductsList() {
         </div>
         <div className="row-button">
           <span>
-            <Link to="/from-product">
+            <Link to="/from-product/0">
               <img
                 src={"src/assets/AdmListProducts/add-list.svg"}
                 onClick={""}

@@ -6,7 +6,7 @@ import { UserContext } from "../../context/UserContext";
 import FileUploader from "./FileUploader";
 import axios from "axios";
 
-const productsForm = (props) => {
+const productsForm = ({ id }) => {
   const [nombre, setNombre] = useState("");
   const [marca, setMarca] = useState("");
   const [categoria, setCategoria] = useState("categoria1");
@@ -16,12 +16,30 @@ const productsForm = (props) => {
   //const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile, setSelectedFile] = React.useState(null);
   const { jwt } = useContext(UserContext);
+  let [info, setInfo] = useState([]);
 
   const options = [
     { value: "1", label: "Monitor" },
     { value: "2", label: "Teclado" },
     { value: "3", label: "Diadlema" },
   ];
+
+  var config = {
+    method: "get",
+    url: `http://localhost:3001/productos/${parseInt(id)}`,
+    headers: {
+      "access-token": jwt,
+    },
+  };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const res = await axios(config);
+      setInfo(res.data.data);
+    };
+
+    fetchProduct();
+  }, []);
 
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
@@ -50,7 +68,10 @@ const productsForm = (props) => {
   const handleFormSubit = async (event) => {
     event.preventDefault();
 
+    var myHeaders = new Headers();
     var formdata = new FormData();
+
+    myHeaders.append("access-token", jwt);
 
     formdata.append("nombre", nombre);
     formdata.append("marca", marca);
@@ -60,35 +81,54 @@ const productsForm = (props) => {
     formdata.append("descripcion", descripcion);
     formdata.append("recfile", selectedFile);
 
-    var myHeaders = new Headers();
-    myHeaders.append("access-token", jwt);
+    var requestOptions;
 
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: formdata,
-      redirect: "follow",
-    };
+    if (id == "0") {
+      console.log("form: ", 0);
+      requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
 
-    fetch("http://localhost:3001/productos", requestOptions)
-      .then((response) => {
-        response.text();
-        console.log(response)
-        alert("Producto creado correctamente");
-        clearForm()
-      })
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+      fetch("http://localhost:3001/productos", requestOptions)
+        .then((response) => {
+          response.text();
+          console.log(response);
+          alert("Producto creado correctamente");
+          clearForm();
+        })
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+    } else {
+      requestOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+
+      fetch(`http://localhost:3001/productos/${id}`, requestOptions)
+        .then((response) => {
+          response.text();
+          console.log(response);
+          alert(`Producto: ${id} modificado correctamente`);
+          clearForm();
+        })
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+    }
   };
 
   function clearForm() {
     setNombre("");
-    setCategoria("")
-    setDescripcion("")
-    setMarca("")
-    setPrecio(0)
-    setStock(0)   
-}
+    setCategoria("");
+    setDescripcion("");
+    setMarca("");
+    setPrecio(0);
+    setStock(0);
+  }
 
   return (
     <>
@@ -133,7 +173,7 @@ const productsForm = (props) => {
                     <input
                       className="from-input"
                       type="text"
-                      value={nombre}
+                      value={info != undefined ? info.nombre : ""}
                       required
                       onChange={handleNombreChange}
                     />
@@ -146,7 +186,7 @@ const productsForm = (props) => {
                     <input
                       className="from-input"
                       type="text"
-                      value={marca}
+                      value={info != undefined ? info.marca : ""}
                       required
                       onChange={handleMarcaChange}
                     />
@@ -156,14 +196,12 @@ const productsForm = (props) => {
                   <div className="requerido">*</div>
                   <div className="col2">Categoria</div>
                   <div className="col3">
-                    <Select
-                      className=""
-                      classNamePrefix=""
-                      name="color"
-                      options={options}
-                      onChange={handleCategoria}
-                      placeholder="Seleccione una categoria"
+                    <input
+                      className="from-input"
+                      type="text"
+                      value={info != undefined ? info.categoria : ""}
                       required
+                      onChange={handleCategoria}
                     />
                   </div>
                 </div>
@@ -174,7 +212,7 @@ const productsForm = (props) => {
                     <input
                       className="from-input"
                       type="number"
-                      value={stock}
+                      value={info != undefined ? info.cantidad : ""}
                       onChange={handleStockChange}
                       required
                     />
@@ -187,7 +225,7 @@ const productsForm = (props) => {
                     <input
                       className="from-input"
                       type="number"
-                      value={precio}
+                      value={info != undefined ? info.precio : ""}
                       required
                       onChange={handlePrecioChange}
                     />
@@ -199,7 +237,7 @@ const productsForm = (props) => {
                   <div className="col3">
                     <textarea
                       className="from-input"
-                      value={descripcion}
+                      value={info != undefined ? info.descripcion : ""}
                       onChange={handleDescripcionChange}
                     />
                   </div>
