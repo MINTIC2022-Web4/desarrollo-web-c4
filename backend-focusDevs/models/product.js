@@ -1,28 +1,51 @@
-const mongoose = require('mongoose');
 
-const productSchema = mongoose.Schema({
-    imagen:{
-       type:String
+
+const mongoose = require("mongoose");
+const sequencing = require("../config/sequence");
+
+const productSchema = new mongoose.Schema({
+    _id: Number,
+    imagen: {
+        type: String
     },
-    nombre:{
-        type:String
+    nombre: {
+        type: String
     },
-    precio:{
-      type: Number
-    },
-    cantidad:{
+    precio: {
         type: Number
     },
-    marca:{
-         type:String
+    cantidad: {
+        type: Number
     },
-    categoria:{
-        type:String
+    marca: {
+        type: String
     },
-    fechaVenta:{
+    descripcion: {
+        type: String
     }
-    
-    
 })
 
-module.exports=mongoose.model('products',productSchema);
+//autoIncrement.plugin(autoIncrement);
+productSchema.pre("save", function (next) {
+    let doc = this;
+    sequencing.getSequenceNextValue("product_id").
+        then(counter => {
+            console.log("asdasd", counter);
+            if (!counter) {
+                sequencing.insertCounter("product_id")
+                    .then(counter => {
+                        doc._id = counter;
+                        console.log(doc)
+                        next();
+                    })
+                    .catch(error => next(error))
+            } else {
+                doc._id = counter;
+                next();
+            }
+        })
+        .catch(error => next(error))
+});
+
+module.exports = mongoose.model('products', productSchema);
+

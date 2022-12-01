@@ -5,14 +5,11 @@ const app = express()
 var cors = require('cors')
 const port = 3001
 bodyParser = require('body-parser'),
-jwt = require('jsonwebtoken')
-require ('dotenv').config();
+    jwt = require('jsonwebtoken')
+require('dotenv').config();
 const routeProduct = require('./config/product');
 const routelogin = require('./config/login');
-
-
-
-
+const db = require("./config/keys").mongoURI;
 const fileUpload = require('express-fileupload');
 const _ = require('lodash');
 const { response } = require('express');
@@ -40,15 +37,16 @@ app.use("/login", require('./routes/ruta-login'));
 
 // middlewares
 app.use(express.json());
-app.use('/api',routeProduct)
+app.use('/api', routeProduct)
 
-app.use('/api',routelogin)
+app.use('/api', routelogin)
 
 //conecion a la base de Datos mongodb Atlas
 mongoose
-.connect(process.env.MONGODB_URI)
-.then(() => console.log('connect to MongoDb Atlas'))
-.catch((error) => console.error(error));
+    .connect(db,
+        { useNewUrlParser: true })
+    .then(() => console.log('connect to MongoDb Atlas'))
+    .catch((error) => console.error(error));
 
 app.listen(port, () => console.log(`App esta en el puerto ${port}!`));
 

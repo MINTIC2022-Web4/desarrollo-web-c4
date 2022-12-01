@@ -96,12 +96,6 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
         label: "Marca",
       },
       {
-        id: "categoria",
-        numeric: false,
-        disablePadding: false,
-        label: "Categoria",
-      },
-      {
         id: "stock",
         numeric: true,
         disablePadding: false,
@@ -139,12 +133,6 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
         numeric: false,
         disablePadding: false,
         label: "Marca",
-      },
-      {
-        id: "categoria",
-        numeric: false,
-        disablePadding: false,
-        label: "Categoria",
       },
       {
         id: "fecha",
@@ -192,18 +180,18 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
           </TableCell>
           {headCells.map((headCell) => (
             <TableCell
-              key={headCell.id}
+              key={headCell._id}
               align={headCell.numeric ? "right" : "left"}
               padding={headCell.disablePadding ? "none" : "normal"}
-              sortDirection={orderBy === headCell.id ? order : false}
+              sortDirection={orderBy === headCell._id ? order : false}
             >
               <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : "asc"}
-                onClick={createSortHandler(headCell.id)}
+                active={orderBy === headCell._id}
+                direction={orderBy === headCell._id ? order : "asc"}
+                onClick={createSortHandler(headCell._id)}
               >
                 {headCell.label}
-                {orderBy === headCell.id ? (
+                {orderBy === headCell._id ? (
                   <Box component="span" sx={visuallyHidden}>
                     {order === "desc"
                       ? "sorted descending"
@@ -331,7 +319,7 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.id);
+      const newSelected = rows.map((n) => n._id);
       setSelected(newSelected);
       return;
     }
@@ -403,17 +391,17 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.id);
+                  const isItemSelected = isSelected(row._id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.id)}
+                      onClick={(event) => handleClick(event, row._id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.id}
+                      key={row._id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -432,14 +420,13 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
                         scope="row"
                         padding="none"
                       >
-                        {row.id}
+                        {row._id}
                       </TableCell>
                       <TableCell align="left">
                         <img src={row.imagen} alt="" />
                       </TableCell>
                       <TableCell align="left">{row.nombre}</TableCell>
                       <TableCell align="left">{row.marca}</TableCell>
-                      <TableCell align="left">{row.categoria}</TableCell>
                       <TableCell align="right">
                         {tipoTabla
                           ? parseInt(row.cantidad, 10)

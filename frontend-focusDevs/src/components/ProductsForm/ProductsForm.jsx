@@ -9,7 +9,7 @@ import axios from "axios";
 const productsForm = ({ id }) => {
   const [nombre, setNombre] = useState("");
   const [marca, setMarca] = useState("");
-  const [categoria, setCategoria] = useState("categoria1");
+  const [categoria, setCategoria] = useState("");
   const [stock, setStock] = useState("");
   const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -34,12 +34,15 @@ const productsForm = ({ id }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await axios(config);
+      const res = await axios.get(
+        `http://localhost:3001/productos/${parseInt(id)}`
+      );
       setInfo(res.data.data);
     };
 
     fetchProduct();
   }, []);
+
 
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
@@ -49,7 +52,7 @@ const productsForm = ({ id }) => {
   };
 
   const handleCategoria = (event) => {
-    setCategoria(event.label);
+    setCategoria(event.target.value);
   };
   const handleStockChange = (event) => {
     setStock(event.target.value);
@@ -76,15 +79,16 @@ const productsForm = ({ id }) => {
     formdata.append("nombre", nombre);
     formdata.append("marca", marca);
     formdata.append("categoria", categoria);
-    formdata.append("stock", stock);
+    formdata.append("cantidad", stock);
     formdata.append("precio", precio);
     formdata.append("descripcion", descripcion);
     formdata.append("recfile", selectedFile);
 
+    console.log(categoria)
+
     var requestOptions;
 
     if (id == "0") {
-      console.log("form: ", 0);
       requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -173,7 +177,7 @@ const productsForm = ({ id }) => {
                     <input
                       className="from-input"
                       type="text"
-                      value={info != undefined ? info.nombre : ""}
+                      defaultValue={info != undefined ? info.nombre : ""}
                       required
                       onChange={handleNombreChange}
                     />
@@ -186,13 +190,13 @@ const productsForm = ({ id }) => {
                     <input
                       className="from-input"
                       type="text"
-                      value={info != undefined ? info.marca : ""}
+                      defaultValue={info != undefined ? info.marca : ""}
                       required
                       onChange={handleMarcaChange}
                     />
                   </div>
                 </div>
-                <div className="row">
+                {/*<div className="row">
                   <div className="requerido">*</div>
                   <div className="col2">Categoria</div>
                   <div className="col3">
@@ -204,7 +208,7 @@ const productsForm = ({ id }) => {
                       onChange={handleCategoria}
                     />
                   </div>
-                </div>
+                  </div>*/}
                 <div className="row">
                   <div className="requerido">*</div>
                   <div className="col2">Cantidad</div>
@@ -212,7 +216,7 @@ const productsForm = ({ id }) => {
                     <input
                       className="from-input"
                       type="number"
-                      value={info != undefined ? info.cantidad : ""}
+                      defaultValue={info != undefined ? info.cantidad : ""}
                       onChange={handleStockChange}
                       required
                     />
@@ -225,7 +229,7 @@ const productsForm = ({ id }) => {
                     <input
                       className="from-input"
                       type="number"
-                      value={info != undefined ? info.precio : ""}
+                      defaultValue={info != undefined ? info.precio : ""}
                       required
                       onChange={handlePrecioChange}
                     />
@@ -237,7 +241,7 @@ const productsForm = ({ id }) => {
                   <div className="col3">
                     <textarea
                       className="from-input"
-                      value={info != undefined ? info.descripcion : ""}
+                      defaultValue={info != undefined ? info.descripcion : ""}
                       onChange={handleDescripcionChange}
                     />
                   </div>
