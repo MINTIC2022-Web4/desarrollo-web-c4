@@ -41,13 +41,13 @@ function Header({ user, setUser }) {
       <div className="second-header-container">
         <div className="first-container">
           <Link to="/">home</Link>
-          <div className="select-list">
+          {/*<div className="select-list">
             <select name="categorias">
               <option value="0">Categorias</option>
               <option value="1">Categoría 1</option>
               <option value="2">Categoría 2</option>
             </select>
-          </div>
+          </div>*/}
           {hasRole(user, ["admin"]) && <Link to="/marcas">Marcas</Link>}
           <Link to="/about">About</Link>
           {hasRole(user, ["admin"]) && (

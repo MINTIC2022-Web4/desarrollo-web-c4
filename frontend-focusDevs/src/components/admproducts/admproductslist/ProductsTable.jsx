@@ -430,7 +430,7 @@ const ProductsTable = ({ tipoTabla, listProducts }) => {
                       <TableCell align="right">
                         {tipoTabla
                           ? parseInt(row.cantidad, 10)
-                          : row.fechaVenta}
+                          : row.ventafecha}
                       </TableCell>
                       <TableCell align="right">
                         {parseFloat(row.precio, 10)}

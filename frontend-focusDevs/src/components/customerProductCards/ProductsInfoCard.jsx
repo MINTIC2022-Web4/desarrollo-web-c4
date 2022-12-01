@@ -23,7 +23,7 @@ const ProductsInfoCard = ({ productsInfo, loading }) => {
     <>
       <div className="product-row">
         {productsInfo.map((info) => (
-          <div key={info.id} className="product-container">
+          <div key={info._id} className="product-container">
             <a
               href="#"
               className="item1"

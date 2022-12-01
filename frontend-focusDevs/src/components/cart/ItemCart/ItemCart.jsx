@@ -8,7 +8,7 @@ function ItemCart({ product }) {
     const quantityRef = useRef();
     const { restProductsCart, sumProductsCart } = useCart();
     return (
-        <div className='card-item-cart'>
+        <div key={product._id} className='card-item-cart'>
             <div className='card-item-cart__image'>
                 <img src={product.imagen} alt={product.nombre} />
             </div>

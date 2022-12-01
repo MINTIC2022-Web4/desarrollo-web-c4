@@ -1,5 +1,5 @@
 
-const llave  = require('../jwt')
+const llave = require('../jwt')
 
 module.exports = {
     login: (req, res) => {
