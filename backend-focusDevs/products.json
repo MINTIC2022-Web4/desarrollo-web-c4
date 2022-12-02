@@ -1,0 +1,144 @@
+[
+  {
+    "_id": 1,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung",
+    "categoria": "monitor",
+    "fechaVenta": "2022/01/02",
+    "descripcion": "desc"
+  },
+  {
+    "_id": 2,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 2,
+    "marca": "Samsung",
+    "categoria": "memoria RAM",
+    "fechaVenta": "2022/01/03"
+  },
+  {
+    "_id": 3,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 3,
+    "marca": "Samsung",
+    "fechaVenta": "2022/01/04"
+  },
+  {
+    "_id": 4,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 4,
+    "marca": "Samsung"
+  },
+  {
+    "_id": 5,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+  },
+  {
+    "_id":6,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 100,
+    "marca": "Samsung"
+},
+{
+    "_id":7,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 10,
+    "marca": "LG"
+},
+{
+    "_id":8,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 9,
+    "marca": "ACER"
+},
+{
+    "_id":9,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":10,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 3,
+    "marca": "Samsung"
+},
+{
+    "_id":11,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":12,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":13,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":14,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":15,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":16,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+},
+{
+    "_id":17,
+    "imagen": "https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$",
+    "nombre": "Monitor Curvo FHD de 24'' HDMi",
+    "precio": 199.99,
+    "cantidad": 1,
+    "marca": "Samsung"
+}
+]

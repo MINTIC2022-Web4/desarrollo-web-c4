@@ -1,0 +1,20 @@
+.container-marcas {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 0.02fr);
+  margin-top: 10% !important;
+}
+
+.container-marcas .row-breadcrumb {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: 5vh 10vw;
+  }
+
+.container-marcas .info-marcas {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  margin: 5vh 15vw;
+}
+/*.div3 {
+  grid-area: 3 / 1 / 4 / 2;
+}*/

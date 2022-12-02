@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "6a777055-93bb-4e22-b1eb-29e91ff789a7",
+		"name": "mintic ciclo 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/productos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/productos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"productos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/productos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"productos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"imagen\": \"https://images.samsung.com/is/image/samsung/pe-f390fhl-lc24f390fhlxpe-frontblack-249123527?$650_519_PNG$\",\r\n    \"nombre\": \"Monitor Curvo FHD de 24'' HDMi\",\r\n    \"precio\": 199.99,\r\n    \"cantidad\": 1,\r\n    \"marca\": \"Samsung\",\r\n    \"categoria\": \"monitor\",\r\n    \"fechaVenta\": \"2022/01/02\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/productos",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"id\":3,   \r\n\"isbn\":\"123\"\r\n,\r\n\"title\":\"Eloquent JavaScript, Third Edition\",\r\n\"subtitle\":\"A Modern Introduction to Programming\",\r\n\"author\":\"Marijn Haverbeke\"\r\n,\r\n\"published\":\"2018-12-04T00:00:00.000Z\",\r\n\"publisher\":\"No Starch Press\",\r\n\"pages\":472,\r\n\"description\":\"JavaScript lies at the heart of almost every modern web application from social apps like Twitter to browser-based game frameworks like Phaser and Babylon. Though simple for beginners to pick up and play with,JavaScript is a flexible, complex language that you can use to build full-scale applications.\",\r\n\"website\":\"http://eloquentjavascript.net/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/productos/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"productos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
