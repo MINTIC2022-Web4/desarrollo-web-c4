@@ -1,0 +1,19 @@
+.alert {
+    position: absolute;
+    /* center absolute div */
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 5%;
+    width: 80%;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert .span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}

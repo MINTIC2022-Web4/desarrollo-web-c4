@@ -1,0 +1,21 @@
+.container-about {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 0.02fr);
+  margin-top: 10% !important;
+}
+
+.container-about .row-breadcrumb {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: 5vh 10vw;
+}
+
+.container-about .info {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  margin: 5vh 15vw;
+}
+.info2 {
+  grid-area: 3 / 1 / 4 / 2;
+  margin-bottom: 25vh;
+}
